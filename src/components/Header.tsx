@@ -17,9 +17,14 @@ const Header = ({ isScrolled }: HeaderProps) => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <a href="/" className="flex items-center space-x-2">
+          <a href="/" className="flex items-center space-x-3">
+            <img 
+              src="/lovable-uploads/bc6f70da-0a7e-4d20-bb12-66f35bf8fe4b.png" 
+              alt="Bixory Logo" 
+              className="h-8 w-auto"
+            />
             <span className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-              Bixory
+              BIXORY eCOM
             </span>
           </a>
 
