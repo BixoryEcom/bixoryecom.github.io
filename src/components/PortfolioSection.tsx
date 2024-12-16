@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const stores = [
   {
-    name: "LuxeWatch Boutique",
+    name: "The Big Sports",
     description: "Premium timepiece marketplace",
     image: "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?auto=format&fit=crop&q=80"
   },
