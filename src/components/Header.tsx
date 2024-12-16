@@ -21,7 +21,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
             <img 
               src="/lovable-uploads/bc6f70da-0a7e-4d20-bb12-66f35bf8fe4b.png" 
               alt="Bixory Logo" 
-              className="h-10 w-auto"
+              className="h-20 w-auto"
             />
             <span className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
               BIXORY eCOM
