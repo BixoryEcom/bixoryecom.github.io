@@ -5,7 +5,8 @@ const stores = [
   {
     name: "BIXTORE Arts & Living",
     description: "Premium timepiece marketplace",
-    image: "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?auto=format&fit=crop&q=80",
+    logo: "/lovable-uploads/0ea17bdf-3b16-4ed6-a7c8-1df6e94d6aa1.png"
   },
   {
     name: "EcoHome Essentials",
@@ -35,6 +36,13 @@ const PortfolioSection = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {store.logo && (
+                    <img
+                      src={store.logo}
+                      alt={`${store.name} Logo`}
+                      className="w-32 h-auto mb-4"
+                    />
+                  )}
                   <h3 className="text-2xl font-bold text-white mb-2">{store.name}</h3>
                   <p className="text-white/90 mb-4">{store.description}</p>
                   <Button variant="secondary" size="lg">
