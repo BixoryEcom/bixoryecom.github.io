@@ -16,20 +16,20 @@ const Header = ({ isScrolled }: HeaderProps) => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <a href="/" className="flex items-center space-x-3">
+        <div className="flex items-center justify-between md:justify-start h-16">
+          <a href="/" className="flex items-center space-x-3 mx-auto md:mx-0">
             <img 
               src="/lovable-uploads/bc6f70da-0a7e-4d20-bb12-66f35bf8fe4b.png" 
               alt="Bixory Logo" 
               className="h-20 w-auto"
             />
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-800 dark:from-indigo-400 dark:to-indigo-600 bg-clip-text text-transparent">
               BIXORY eCOM
             </span>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8 ml-auto">
             <a href="/" className="text-sm font-medium hover:text-primary transition-colors">
               Home
             </a>
@@ -46,7 +46,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden absolute right-4"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
