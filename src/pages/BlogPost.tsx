@@ -1,7 +1,9 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
+import { ArrowLeft } from "lucide-react";
 
 // This would typically come from an API or CMS
 const blogPosts = {
@@ -72,22 +74,47 @@ const BlogPost = () => {
     <div className="min-h-screen flex flex-col">
       <Header isScrolled={false} />
       
-      <main className="flex-grow container mx-auto px-4 py-24">
-        <article className="max-w-3xl mx-auto prose prose-lg dark:prose-invert">
-          <img
-            src={post.coverImage}
-            alt={post.title}
-            className="w-full h-64 object-cover rounded-lg mb-8"
-          />
-          
-          <div className="flex items-center justify-between mb-8">
-            <p className="text-muted-foreground">
-              {format(new Date(post.date), "MMMM d, yyyy")}
-            </p>
-            <p className="text-muted-foreground">{post.author}</p>
+      <main className="flex-grow">
+        {/* Hero Section with Cover Image and Title */}
+        <div className="relative h-[60vh] min-h-[400px] w-full">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${post.coverImage})` }}
+          >
+            <div className="absolute inset-0 bg-black/50" />
           </div>
-          
-          <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div className="absolute inset-0 flex flex-col justify-center items-center text-white container mx-auto px-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-center max-w-4xl">
+              {post.title}
+            </h1>
+            <div className="mt-6 flex items-center gap-4 text-lg">
+              <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
+              <span>•</span>
+              <span>{post.author}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Blog Content */}
+        <article className="container mx-auto px-4 py-16">
+          <div className="max-w-3xl mx-auto prose prose-lg dark:prose-invert">
+            <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
+            
+            {/* Back to Blog List Button */}
+            <div className="mt-16 flex justify-center">
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                className="gap-2"
+              >
+                <Link to="/blog">
+                  <ArrowLeft className="w-4 h-4" />
+                  Back to Blog List
+                </Link>
+              </Button>
+            </div>
+          </div>
         </article>
       </main>
       
