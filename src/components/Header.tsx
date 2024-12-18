@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -17,7 +18,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between md:justify-start h-16">
-          <a href="/" className="flex items-center space-x-2 mx-auto md:mx-0">
+          <Link to="/" className="flex items-center space-x-2 mx-auto md:mx-0">
             <img 
               src="/lovable-uploads/bc6f70da-0a7e-4d20-bb12-66f35bf8fe4b.png" 
               alt="Bixory Logo" 
@@ -26,19 +27,19 @@ const Header = ({ isScrolled }: HeaderProps) => {
             <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-800 dark:from-indigo-400 dark:to-indigo-600 bg-clip-text text-transparent">
               BIXORY eCOM
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 ml-auto">
-            <a href="/" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
               Home
-            </a>
-            <a href="/blog" className="text-sm font-medium hover:text-primary transition-colors">
+            </Link>
+            <Link to="/blog" className="text-sm font-medium hover:text-primary transition-colors">
               Blog
-            </a>
-            <a href="/contact" className="text-sm font-medium hover:text-primary transition-colors">
+            </Link>
+            <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors">
               Contact Us
-            </a>
+            </Link>
             <Button variant="default" size="sm">
               Explore Portfolio
             </Button>
@@ -58,15 +59,15 @@ const Header = ({ isScrolled }: HeaderProps) => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 right-0 bg-background border-b">
             <nav className="flex flex-col space-y-4 p-4">
-              <a href="/" className="text-sm font-medium hover:text-primary transition-colors">
+              <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
                 Home
-              </a>
-              <a href="/blog" className="text-sm font-medium hover:text-primary transition-colors">
+              </Link>
+              <Link to="/blog" className="text-sm font-medium hover:text-primary transition-colors">
                 Blog
-              </a>
-              <a href="/contact" className="text-sm font-medium hover:text-primary transition-colors">
+              </Link>
+              <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors">
                 Contact Us
-              </a>
+              </Link>
               <Button variant="default" size="sm" className="w-full">
                 Explore Portfolio
               </Button>
