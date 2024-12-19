@@ -6,12 +6,14 @@ const stores = [
     name: "BIXTORE Arts & Living",
     description: "Premium timepiece marketplace",
     image: "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?auto=format&fit=crop&q=80",
-    logo: "/lovable-uploads/0ea17bdf-3b16-4ed6-a7c8-1df6e94d6aa1.png"
+    logo: "/lovable-uploads/0ea17bdf-3b16-4ed6-a7c8-1df6e94d6aa1.png",
+    link: "https://bixports.com"
   },
   {
     name: "EcoHome Essentials",
     description: "Sustainable home goods",
-    image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80",
+    link: "https://bixtore.com"
   }
 ];
 
@@ -45,9 +47,11 @@ const PortfolioSection = () => {
                   )}
                   <h3 className="text-2xl font-bold text-white mb-2">{store.name}</h3>
                   <p className="text-white/90 mb-4">{store.description}</p>
-                  <Button variant="secondary" size="lg">
-                    Visit Store
-                  </Button>
+                  <a href={store.link} target="_blank" rel="noopener noreferrer">
+                    <Button variant="secondary" size="lg">
+                      Visit Store
+                    </Button>
+                  </a>
                 </div>
               </CardContent>
             </Card>
