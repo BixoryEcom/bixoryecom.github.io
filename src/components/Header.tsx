@@ -18,7 +18,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between md:justify-start h-16">
-          <Link to="/" className="flex items-center space-x-2 mx-auto md:mx-0">
+          <Link to="/" className="flex items-center space-x-1 mx-auto md:mx-0">
             <img 
               src="/lovable-uploads/bc6f70da-0a7e-4d20-bb12-66f35bf8fe4b.png" 
               alt="Bixory Logo" 
@@ -31,13 +31,28 @@ const Header = ({ isScrolled }: HeaderProps) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 ml-auto">
-            <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link 
+              to="/" 
+              className={`text-lg font-medium transition-colors ${
+                isScrolled ? "text-foreground hover:text-primary" : "text-[#D3E4FD] hover:text-white"
+              }`}
+            >
               Home
             </Link>
-            <Link to="/blog" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link 
+              to="/blog" 
+              className={`text-lg font-medium transition-colors ${
+                isScrolled ? "text-foreground hover:text-primary" : "text-[#D3E4FD] hover:text-white"
+              }`}
+            >
               Blog
             </Link>
-            <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link 
+              to="/contact" 
+              className={`text-lg font-medium transition-colors ${
+                isScrolled ? "text-foreground hover:text-primary" : "text-[#D3E4FD] hover:text-white"
+              }`}
+            >
               Contact Us
             </Link>
             <Button variant="default" size="sm">
