@@ -24,7 +24,9 @@ const Header = ({ isScrolled }: HeaderProps) => {
               alt="Bixory Logo" 
               className="h-20 w-auto"
             />
-            <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-800 dark:from-indigo-400 dark:to-indigo-600 bg-clip-text text-transparent absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 md:left-auto">
+            <span className={`text-2xl font-bold bg-gradient-to-r from-[#8B5CF6] to-[#6D28D9] bg-clip-text text-transparent absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 md:left-auto transition-colors duration-300 ${
+              isScrolled ? "dark:from-indigo-400 dark:to-indigo-600" : "dark:from-indigo-300 dark:to-indigo-500"
+            }`}>
               BIXORY eCOM
             </span>
           </Link>
