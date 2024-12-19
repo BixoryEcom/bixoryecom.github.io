@@ -21,20 +21,24 @@ const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      // In a real application, you would send this to your backend
-      // For now, we'll just simulate the email being sent
-      console.log("Sending email to support@bixory.com", data);
+      // Create mailto link with form data
+      const mailtoLink = `mailto:main@bixory.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(
+        `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
+      )}`;
+      
+      // Open default email client
+      window.location.href = mailtoLink;
       
       toast({
-        title: "Message Sent!",
-        description: "Thank you for contacting us. We'll get back to you soon.",
+        title: "Email Client Opened",
+        description: "Your default email client has been opened with your message.",
       });
       
       reset();
     } catch (error) {
       toast({
         title: "Error",
-        description: "There was a problem sending your message. Please try again.",
+        description: "There was a problem opening your email client. Please try again.",
         variant: "destructive",
       });
     } finally {
