@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 const stores = [
   {
     name: "BIXTORE Arts & Living",
-    description: "Premium timepiece marketplace",
-    image: "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?auto=format&fit=crop&q=80",
+    description: "Premium Lifestyle Goods",
+    image: "/lovable-uploads/8554aa2d-e64a-438f-8bcb-072be04cda29.png",
     logo: "/lovable-uploads/0ea17bdf-3b16-4ed6-a7c8-1df6e94d6aa1.png",
     link: "https://bixports.com"
   },
