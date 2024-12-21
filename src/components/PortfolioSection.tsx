@@ -42,7 +42,7 @@ const PortfolioSection = () => {
                     <img
                       src={store.logo}
                       alt={`${store.name} Logo`}
-                      className="w-32 h-auto mb-4"
+                      className="w-24 h-auto mb-2"
                     />
                   )}
                   <h3 className="text-2xl font-bold text-white mb-2">{store.name}</h3>
