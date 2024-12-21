@@ -6,7 +6,7 @@ const stores = [
     name: "BIXTORE Arts & Living",
     description: "Premium Lifestyle Goods",
     image: "/lovable-uploads/8554aa2d-e64a-438f-8bcb-072be04cda29.png",
-    logo: "/lovable-uploads/0ea17bdf-3b16-4ed6-a7c8-1df6e94d6aa1.png",
+    logo: "/lovable-uploads/17644bb9-3a27-4dec-815a-a688892dbb11.png",
     link: "https://bixports.com"
   },
   {
@@ -48,7 +48,11 @@ const PortfolioSection = () => {
                   <h3 className="text-2xl font-bold text-white mb-2">{store.name}</h3>
                   <p className="text-white/90 mb-4">{store.description}</p>
                   <a href={store.link} target="_blank" rel="noopener noreferrer">
-                    <Button variant="secondary" size="lg">
+                    <Button 
+                      variant="secondary" 
+                      size="lg"
+                      className="hover:bg-[#9b87f5] hover:text-white transition-colors"
+                    >
                       Visit Store
                     </Button>
                   </a>
