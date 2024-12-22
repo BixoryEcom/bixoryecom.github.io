@@ -37,16 +37,16 @@ const PortfolioSection = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 py-4">
+                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 py-2">
                   {store.logo && (
                     <img
                       src={store.logo}
                       alt={`${store.name} Logo`}
-                      className="w-20 h-auto mb-0.5"
+                      className="w-16 h-auto mb-0"
                     />
                   )}
-                  <h3 className="text-2xl font-bold text-white mb-1">{store.name}</h3>
-                  <p className="text-white/90 mb-3">{store.description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-0.5">{store.name}</h3>
+                  <p className="text-white/90 mb-2">{store.description}</p>
                   <a href={store.link} target="_blank" rel="noopener noreferrer">
                     <Button 
                       variant="secondary" 
