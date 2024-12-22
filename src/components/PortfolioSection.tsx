@@ -10,9 +10,9 @@ const stores = [
     link: "https://bixports.com"
   },
   {
-    name: "EcoHome Essentials",
-    description: "Sustainable home goods",
-    image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80",
+    name: "The Big Sports",
+    description: "Affordable Sporting Gears",
+    image: "/lovable-uploads/f6dfee09-e03e-41d2-9a50-6f5fd5547289.png",
     link: "https://bixtore.com"
   }
 ];
