@@ -13,6 +13,7 @@ const stores = [
     name: "The Big Sports",
     description: "Affordable Sporting Gears",
     image: "/lovable-uploads/f6dfee09-e03e-41d2-9a50-6f5fd5547289.png",
+    logo: "/lovable-uploads/c246f473-4905-48d0-b2ac-7d64d13d3ca8.png",
     link: "https://bixtore.com"
   }
 ];
