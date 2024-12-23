@@ -10,6 +10,13 @@ interface HeaderProps {
 const Header = ({ isScrolled }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToPortfolio = () => {
+    const portfolioSection = document.getElementById('portfolio-section');
+    if (portfolioSection) {
+      portfolioSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -57,7 +64,11 @@ const Header = ({ isScrolled }: HeaderProps) => {
             >
               Contact Us
             </Link>
-            <Button variant="default" size="sm">
+            <Button 
+              variant="default" 
+              size="sm"
+              onClick={scrollToPortfolio}
+            >
               Explore Portfolio
             </Button>
           </nav>
@@ -85,7 +96,12 @@ const Header = ({ isScrolled }: HeaderProps) => {
               <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors">
                 Contact Us
               </Link>
-              <Button variant="default" size="sm" className="w-full">
+              <Button 
+                variant="default" 
+                size="sm" 
+                className="w-full"
+                onClick={scrollToPortfolio}
+              >
                 Explore Portfolio
               </Button>
             </nav>

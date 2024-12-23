@@ -18,6 +18,13 @@ const HeroSection = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const scrollToPortfolio = () => {
+    const portfolioSection = document.getElementById('portfolio-section');
+    if (portfolioSection) {
+      portfolioSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Images */}
@@ -54,6 +61,7 @@ const HeroSection = () => {
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-white min-w-[200px]"
+            onClick={scrollToPortfolio}
           >
             Explore Our Portfolio <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
