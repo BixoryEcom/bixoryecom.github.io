@@ -10,7 +10,14 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Branding Column */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold">Bixory</h3>
+            <div className="flex items-center gap-2">
+              <img 
+                src="/lovable-uploads/73845396-eac7-477c-a78d-466f850a111d.png" 
+                alt="Bixory Logo" 
+                className="h-8 w-auto"
+              />
+              <h3 className="text-2xl font-bold">BIXORY eCOM</h3>
+            </div>
             <p className="text-sm text-gray-400">Build Next-gen eCommerce</p>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-primary transition-colors">
