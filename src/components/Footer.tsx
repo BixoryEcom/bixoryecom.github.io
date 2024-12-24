@@ -2,8 +2,47 @@ import { Facebook, Github, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const { toast } = useToast();
+
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const handleSubscribe = async () => {
+    if (!validateEmail(email)) {
+      toast({
+        variant: "destructive",
+        title: "Invalid Email",
+        description: "Sorry, the email you provided is not valid",
+      });
+      return;
+    }
+
+    try {
+      // Using mailto link as a fallback since direct email sending requires backend implementation
+      window.location.href = `mailto:main@bixory.com?subject=Someone subscribed&body=New subscription from: ${email}`;
+      
+      toast({
+        title: "Subscription Successful!",
+        description: "Thanks for your subscription! We will keep you updated with helpful eCom tips and our latest development!",
+      });
+      
+      setEmail(""); // Clear the input after successful subscription
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+      });
+    }
+  };
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -82,8 +121,10 @@ const Footer = () => {
                 type="email"
                 placeholder="Enter your email"
                 className="bg-gray-800 border-gray-700"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <Button className="w-full">Sign Up Now</Button>
+              <Button className="w-full" onClick={handleSubscribe}>Sign Up Now</Button>
             </div>
           </div>
         </div>
