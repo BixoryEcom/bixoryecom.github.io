@@ -19,9 +19,9 @@ const Terms = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header isScrolled={isScrolled} />
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
+      <main className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto pt-32 pb-12">
+          <h1 className="text-4xl font-bold mb-8 text-center text-foreground">Terms of Service</h1>
           <ScrollArea className="h-[600px] rounded-md border p-6">
             <div className="space-y-6 text-gray-700 dark:text-gray-300">
               <section>
