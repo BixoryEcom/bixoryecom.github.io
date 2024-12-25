@@ -2,7 +2,7 @@ import { Building, Globe, ShoppingBag } from "lucide-react";
 
 const AboutSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-purple-50/50">
+    <section className="py-20 bg-gradient-to-b from-background via-purple-50/30 to-white/90">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
