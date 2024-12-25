@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, Building, Globe, ShoppingBag } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
@@ -28,7 +28,7 @@ const Index = () => {
         <AboutSection />
         <PortfolioSection />
         <ServicesSection />
-        <section className="container mx-auto py-20 px-4">
+        <section className="container mx-auto py-20 px-4 bg-gradient-to-b from-white/90 to-purple-50/30">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold mb-6">Let's Build Something Great Together</h2>
             <p className="text-lg text-muted-foreground mb-8">
