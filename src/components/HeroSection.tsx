@@ -25,6 +25,13 @@ const HeroSection = () => {
     }
   };
 
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('services-section');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Images */}
@@ -69,6 +76,7 @@ const HeroSection = () => {
             size="lg"
             variant="outline"
             className="bg-white/10 hover:bg-white/20 text-white border-white min-w-[200px]"
+            onClick={scrollToServices}
           >
             Learn More
           </Button>
