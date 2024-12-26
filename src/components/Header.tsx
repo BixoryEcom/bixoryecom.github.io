@@ -15,51 +15,52 @@ const Header = ({ isScrolled }: HeaderProps) => {
     if (portfolioSection) {
       portfolioSection.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMenuOpen(false);
   };
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between md:justify-start h-16">
-          <Link to="/" className="flex items-center md:space-x-1 relative w-full md:w-auto">
+        <div className="flex items-center justify-between h-16">
+          <Link to="/" className="flex items-center space-x-2 relative">
             <img 
               src="/lovable-uploads/bc6f70da-0a7e-4d20-bb12-66f35bf8fe4b.png" 
               alt="Bixory Logo" 
               className="h-20 w-auto"
             />
-            <span className={`text-2xl font-bold bg-gradient-to-r from-[#8B5CF6] to-[#6D28D9] bg-clip-text text-transparent absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 md:left-auto transition-colors duration-300 ${
+            <span className={`text-xl md:text-2xl font-bold bg-gradient-to-r from-[#8B5CF6] to-[#6D28D9] bg-clip-text 
+              text-transparent transition-colors duration-300 ${
               isScrolled ? "dark:from-indigo-400 dark:to-indigo-600" : "dark:from-indigo-300 dark:to-indigo-500"
             }`}>
               BIXORY eCOM
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 ml-auto">
+          <nav className={`hidden md:flex items-center space-x-8`}>
             <Link 
               to="/" 
-              className={`text-lg font-medium transition-colors ${
-                isScrolled ? "text-foreground hover:text-primary" : "text-[#D3E4FD] hover:text-white"
+              className={`text-lg font-medium transition-all duration-300 hover:text-purple-600 ${
+                isScrolled ? "text-foreground" : "text-[#D3E4FD]"
               }`}
             >
               Home
             </Link>
             <Link 
               to="/blog" 
-              className={`text-lg font-medium transition-colors ${
-                isScrolled ? "text-foreground hover:text-primary" : "text-[#D3E4FD] hover:text-white"
+              className={`text-lg font-medium transition-all duration-300 hover:text-purple-600 ${
+                isScrolled ? "text-foreground" : "text-[#D3E4FD]"
               }`}
             >
               Blog
             </Link>
             <Link 
               to="/contact" 
-              className={`text-lg font-medium transition-colors ${
-                isScrolled ? "text-foreground hover:text-primary" : "text-[#D3E4FD] hover:text-white"
+              className={`text-lg font-medium transition-all duration-300 hover:text-purple-600 ${
+                isScrolled ? "text-foreground" : "text-[#D3E4FD]"
               }`}
             >
               Contact Us
@@ -68,14 +69,14 @@ const Header = ({ isScrolled }: HeaderProps) => {
               variant="default" 
               size="sm"
               onClick={scrollToPortfolio}
+              className="bg-purple-600 hover:bg-purple-700 transition-all duration-300 transform hover:scale-105"
             >
               Explore Portfolio
             </Button>
           </nav>
 
-          {/* Mobile Menu Button */}
           <button
-            className="md:hidden absolute right-4"
+            className="md:hidden relative z-50 p-2 -mr-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -83,30 +84,42 @@ const Header = ({ isScrolled }: HeaderProps) => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-background border-b">
-            <nav className="flex flex-col space-y-4 p-4">
-              <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
-                Home
-              </Link>
-              <Link to="/blog" className="text-sm font-medium hover:text-primary transition-colors">
-                Blog
-              </Link>
-              <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors">
-                Contact Us
-              </Link>
-              <Button 
-                variant="default" 
-                size="sm" 
-                className="w-full"
-                onClick={scrollToPortfolio}
-              >
-                Explore Portfolio
-              </Button>
-            </nav>
-          </div>
-        )}
+        {/* Mobile Navigation with improved animation */}
+        <div className={`md:hidden fixed inset-0 bg-background/95 backdrop-blur-lg transition-transform duration-300 ease-in-out ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}>
+          <nav className="flex flex-col items-center justify-center h-full space-y-8">
+            <Link 
+              to="/" 
+              className="text-2xl font-medium hover:text-purple-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/blog" 
+              className="text-2xl font-medium hover:text-purple-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <Link 
+              to="/contact" 
+              className="text-2xl font-medium hover:text-purple-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact Us
+            </Link>
+            <Button 
+              variant="default" 
+              size="lg"
+              onClick={scrollToPortfolio}
+              className="bg-purple-600 hover:bg-purple-700 transition-all duration-300 transform hover:scale-105 w-48"
+            >
+              Explore Portfolio
+            </Button>
+          </nav>
+        </div>
       </div>
     </header>
   );
