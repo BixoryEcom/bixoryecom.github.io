@@ -27,10 +27,10 @@ const PortfolioSection = () => {
   };
 
   return (
-    <section id="portfolio-section" className="py-24 bg-gradient-to-b from-purple-50/50 via-background to-white/90">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 
-          md:text-5xl">
+    <section id="portfolio-section" className="py-24 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-purple-50/80 via-white to-purple-100/30"></div>
+      <div className="container mx-auto px-4 relative">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
           Discover Our Brands
         </h2>
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
