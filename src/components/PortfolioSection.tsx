@@ -7,18 +7,25 @@ const stores = [
     description: "Premium Lifestyle Goods",
     image: "/lovable-uploads/8554aa2d-e64a-438f-8bcb-072be04cda29.png",
     logo: "/lovable-uploads/17644bb9-3a27-4dec-815a-a688892dbb11.png",
-    link: "https://bixports.com"
+    link: "https://bixports.com/"
   },
   {
     name: "The Big Sports",
     description: "Affordable Sporting Gears",
     image: "/lovable-uploads/f6dfee09-e03e-41d2-9a50-6f5fd5547289.png",
     logo: "/lovable-uploads/c246f473-4905-48d0-b2ac-7d64d13d3ca8.png",
-    link: "https://bixtore.com"
+    link: "https://bixtore.com/"
   }
 ];
 
 const PortfolioSection = () => {
+  const handleStoreClick = (link: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    if (link) {
+      window.open(link.replace(/:\/*$/, ''), '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <section id="portfolio-section" className="py-24 bg-gradient-to-b from-purple-50/50 via-background to-white/90">
       <div className="container mx-auto px-4">
@@ -54,17 +61,15 @@ const PortfolioSection = () => {
                   )}
                   <h3 className="text-2xl font-bold text-white mb-2 text-center drop-shadow-lg">{store.name}</h3>
                   <p className="text-white/90 mb-6 text-center drop-shadow-md">{store.description}</p>
-                  <a 
-                    href={store.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                  <button 
+                    onClick={(e) => handleStoreClick(store.link, e)}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-white/90 hover:bg-white text-purple-600 rounded-full 
                       font-semibold transition-all duration-300 hover:gap-3 hover:px-7 group/link"
                   >
                     Visit Store
                     <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/link:transform 
                       group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-                  </a>
+                  </button>
                 </div>
               </CardContent>
             </Card>
