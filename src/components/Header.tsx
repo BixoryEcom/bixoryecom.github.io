@@ -21,7 +21,9 @@ const Header = ({ isScrolled }: HeaderProps) => {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-transparent"
+        isScrolled 
+          ? "bg-background/95 backdrop-blur-md shadow-sm" 
+          : "bg-[#1A1F2C]/70 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -44,7 +46,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
             <Link 
               to="/" 
               className={`text-lg font-medium transition-all duration-300 hover:text-purple-600 ${
-                isScrolled ? "text-foreground" : "text-[#D3E4FD]"
+                isScrolled ? "text-foreground" : "text-white"
               }`}
             >
               Home
@@ -52,7 +54,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
             <Link 
               to="/blog" 
               className={`text-lg font-medium transition-all duration-300 hover:text-purple-600 ${
-                isScrolled ? "text-foreground" : "text-[#D3E4FD]"
+                isScrolled ? "text-foreground" : "text-white"
               }`}
             >
               Blog
@@ -60,7 +62,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
             <Link 
               to="/contact" 
               className={`text-lg font-medium transition-all duration-300 hover:text-purple-600 ${
-                isScrolled ? "text-foreground" : "text-[#D3E4FD]"
+                isScrolled ? "text-foreground" : "text-white"
               }`}
             >
               Contact Us
@@ -76,7 +78,9 @@ const Header = ({ isScrolled }: HeaderProps) => {
           </nav>
 
           <button
-            className="md:hidden relative z-50 p-2 -mr-2"
+            className={`md:hidden relative z-50 p-2 -mr-2 ${
+              isScrolled ? "text-foreground" : "text-white"
+            }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
