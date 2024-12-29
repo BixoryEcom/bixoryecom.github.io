@@ -3,7 +3,7 @@ title: Key Elements in Building a Successful Ecom Business
 date: 2024-02-20
 author: Bixory Team
 excerpt: Discover the essential components that make up a thriving ecommerce business in today's digital landscape.
-coverImage: https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80
+coverImage: https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80
 ---
 
 <h1 id="key-elements">Key Elements in Building a Successful Ecom Business</h1>
