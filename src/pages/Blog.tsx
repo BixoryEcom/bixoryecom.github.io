@@ -24,7 +24,6 @@ const categories = [
   "Success Stories"
 ];
 
-// Extended mock blog posts with more content
 const blogPosts = [
   {
     title: "Key Elements in Building a Successful Ecom Business",
@@ -85,7 +84,7 @@ const Blog = () => {
                            post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCategory && matchesSearch;
     })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // Sort by date, newest first
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const featuredPosts = blogPosts.filter(post => post.featured);
   const regularPosts = filteredPosts.filter(post => !post.featured);
@@ -111,15 +110,30 @@ const Blog = () => {
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Featured Posts</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   {featuredPosts.map((post) => (
-                    <div key={post.slug} className="bg-accent/20 rounded-lg p-6">
-                      <div className="aspect-video relative overflow-hidden rounded-lg mb-6">
+                    <div key={post.slug} className="group bg-accent/20 rounded-lg overflow-hidden">
+                      <div className="aspect-video relative overflow-hidden">
                         <img 
                           src={post.coverImage} 
                           alt={post.title}
-                          className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <BlogCard {...post} />
+                      <div className="p-6">
+                        <div className="flex items-center justify-between gap-2 mb-3">
+                          <Badge variant="secondary" className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-100">
+                            {post.category}
+                          </Badge>
+                          <span className="text-sm text-muted-foreground">{post.readingTime}</span>
+                        </div>
+                        <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>
+                        <div className="flex items-center justify-between text-sm text-muted-foreground">
+                          <span>{post.author}</span>
+                          <time>{new Date(post.date).toLocaleDateString()}</time>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
