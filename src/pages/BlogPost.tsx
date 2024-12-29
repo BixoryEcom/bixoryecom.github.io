@@ -7,12 +7,13 @@ import { BlogPost } from "@/types/blog";
 const BlogPostPage = () => {
   const { slug } = useParams();
   const [post, setPost] = useState<BlogPost | null>(null);
+  const [content, setContent] = useState<string>("");
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const response = await import(`../blogs/${slug}.md`);
-        const { attributes } = response.default;
+        const { attributes, html } = response.default;
         setPost({
           title: attributes.title,
           date: attributes.date,
@@ -20,10 +21,12 @@ const BlogPostPage = () => {
           excerpt: attributes.excerpt,
           coverImage: attributes.coverImage,
           slug: slug || "",
-          readingTime: "5 min read", // This could be calculated based on content length
-          views: 1234, // This could be fetched from analytics
-          category: "Strategy" // This could be from frontmatter
+          readingTime: "5 min read",
+          views: 1234,
+          category: "Strategy",
+          featured: false
         });
+        setContent(html);
       } catch (error) {
         console.error("Error loading blog post:", error);
       }
@@ -43,11 +46,11 @@ const BlogPostPage = () => {
       <BlogHeader
         title={post.title}
         date={post.date}
-        readingTime={post.readingTime}
-        views={post.views}
+        readingTime={post.readingTime || "5 min read"}
+        views={post.views || 0}
         coverImage={post.coverImage}
       />
-      <BlogContent slug={slug || ""} />
+      <BlogContent content={content} />
     </div>
   );
 };
