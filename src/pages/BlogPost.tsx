@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
-import { Calendar, Clock, Share2, Bookmark, Eye } from "lucide-react";
+import { Calendar, Clock, Share2, Bookmark, Eye, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 import { TableOfContents } from "@/components/blog/TableOfContents";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
