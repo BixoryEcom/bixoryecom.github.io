@@ -3,8 +3,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
-import { ArrowLeft, Calendar, Clock, Share2, Bookmark, MessageSquare, Eye } from "lucide-react";
+import { Calendar, Clock, Share2, Bookmark, Eye } from "lucide-react";
 import { toast } from "sonner";
+import { TableOfContents } from "@/components/blog/TableOfContents";
+import { ReadingProgress } from "@/components/blog/ReadingProgress";
+import { ArticleNavigation } from "@/components/blog/ArticleNavigation";
+import { RelatedPosts } from "@/components/blog/RelatedPosts";
+import { BackToTop } from "@/components/blog/BackToTop";
+import { ShareCount } from "@/components/blog/ShareCount";
 
 // This would typically come from an API or CMS
 const blogPosts = {
@@ -110,12 +116,29 @@ const BlogPost = () => {
     });
   };
 
+  // Mock data for related posts
+  const relatedPosts = [
+    {
+      slug: "leveraging-analytics-growth",
+      title: "Leveraging Analytics for Growth",
+      excerpt: "Learn how to use data analytics to drive business decisions and accelerate growth.",
+      category: "Analytics"
+    },
+    {
+      slug: "ecommerce-tech-trends-2024",
+      title: "2024 E-commerce Technology Trends",
+      excerpt: "Stay ahead of the curve with these emerging e-commerce technology trends.",
+      category: "Technology"
+    }
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
+      <ReadingProgress />
       <Header isScrolled={false} />
       
       <main className="flex-grow">
-        {/* Hero Section with Cover Image and Title */}
+        {/* Hero Section */}
         <div className="relative h-[60vh] min-h-[400px] w-full">
           <div 
             className="absolute inset-0 bg-cover bg-center"
@@ -140,6 +163,7 @@ const BlogPost = () => {
                 <Eye className="w-5 h-5" />
                 <span>{post.views.toLocaleString()} views</span>
               </div>
+              <ShareCount count={42} /> {/* Mock share count */}
             </div>
           </div>
         </div>
@@ -176,37 +200,43 @@ const BlogPost = () => {
           </div>
         </div>
 
-        {/* Blog Content */}
+        {/* Blog Content with Table of Contents */}
         <article className="container mx-auto px-4 py-16">
-          <div className="max-w-3xl mx-auto">
-            <div className="prose prose-lg dark:prose-invert mx-auto">
-              <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
-            </div>
-            
-            {/* Author Info */}
-            <div className="mt-16 p-6 border rounded-lg bg-muted/30">
-              <h3 className="text-lg font-semibold mb-2">About the Author</h3>
-              <p className="text-muted-foreground">{post.author}</p>
+          <div className="flex gap-8">
+            <div className="flex-grow max-w-3xl mx-auto">
+              <div className="prose prose-lg dark:prose-invert">
+                <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
+              </div>
+              
+              {/* Author Info */}
+              <div className="mt-16 p-6 border rounded-lg bg-muted/30">
+                <h3 className="text-lg font-semibold mb-2">About the Author</h3>
+                <p className="text-muted-foreground">{post.author}</p>
+              </div>
+
+              {/* Navigation */}
+              <ArticleNavigation
+                previousPost={{
+                  slug: "leveraging-analytics-growth",
+                  title: "Leveraging Analytics for Growth"
+                }}
+                nextPost={{
+                  slug: "ecommerce-tech-trends-2024",
+                  title: "2024 E-commerce Technology Trends"
+                }}
+              />
+
+              {/* Related Posts */}
+              <RelatedPosts posts={relatedPosts} />
             </div>
 
-            {/* Back to Blog List Button */}
-            <div className="mt-16 flex justify-center">
-              <Button
-                variant="outline"
-                size="lg"
-                asChild
-                className="gap-2"
-              >
-                <Link to="/blog">
-                  <ArrowLeft className="w-4 h-4" />
-                  Back to Blog List
-                </Link>
-              </Button>
-            </div>
+            {/* Table of Contents Sidebar */}
+            <TableOfContents content={post.content} />
           </div>
         </article>
       </main>
       
+      <BackToTop />
       <Footer />
     </div>
   );
