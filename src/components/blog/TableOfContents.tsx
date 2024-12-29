@@ -23,7 +23,7 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
     const items: HeadingItem[] = matches.map((match) => ({
       level: parseInt(match[1]),
       id: match[2],
-      text: match[3].trim()
+      text: match[3].replace(/^\d+\.\s+/, '').trim() // Remove numbering from the text
     }));
 
     console.log("Found headings with IDs:", items);
