@@ -88,10 +88,6 @@ const BlogPost = () => {
   const { slug } = useParams();
   const post = slug ? blogPosts[slug as keyof typeof blogPosts] : null;
 
-  if (!post) {
-    return <div>Blog post not found</div>;
-  }
-
   const handleShare = async () => {
     try {
       await navigator.share({
@@ -132,109 +128,112 @@ const BlogPost = () => {
     }
   ];
 
+  if (!post) {
+    return <div>Blog post not found</div>;
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <ReadingProgress />
       <Header isScrolled={false} />
       
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <div className="relative h-[60vh] min-h-[400px] w-full">
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${post.coverImage})` }}
-          >
-            <div className="absolute inset-0 bg-black/50" />
+      {/* Hero Section */}
+      <div className="relative h-[60vh] min-h-[400px] w-full">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${post.coverImage})` }}
+        >
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-white container mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-center max-w-4xl mb-6">
+            {post.title}
+          </h1>
+          <div className="flex flex-wrap items-center gap-6 text-lg opacity-90">
+            <div className="flex items-center gap-2">
+              <Calendar className="w-5 h-5" />
+              <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock className="w-5 h-5" />
+              <span>{post.readingTime}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Eye className="w-5 h-5" />
+              <span>{post.views.toLocaleString()} views</span>
+            </div>
+            <ShareCount count={42} /> {/* Mock share count */}
           </div>
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-white container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center max-w-4xl mb-6">
-              {post.title}
-            </h1>
-            <div className="flex flex-wrap items-center gap-6 text-lg opacity-90">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
-                <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5" />
-                <span>{post.readingTime}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Eye className="w-5 h-5" />
-                <span>{post.views.toLocaleString()} views</span>
-              </div>
-              <ShareCount count={42} /> {/* Mock share count */}
+        </div>
+      </div>
+
+      {/* Article Actions */}
+      <div className="sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10 border-b">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex justify-between items-center max-w-3xl mx-auto">
+            <Link to="/blog" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+              <ArrowLeft className="w-4 h-4" />
+              Back to Blog
+            </Link>
+            <div className="flex items-center gap-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="gap-2"
+                onClick={handleShare}
+              >
+                <Share2 className="w-4 h-4" />
+                Share
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="gap-2"
+                onClick={handleBookmark}
+              >
+                <Bookmark className="w-4 h-4" />
+                Save
+              </Button>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Article Actions */}
-        <div className="sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10 border-b">
-          <div className="container mx-auto px-4 py-3">
-            <div className="flex justify-between items-center max-w-3xl mx-auto">
-              <Link to="/blog" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Blog
-              </Link>
-              <div className="flex items-center gap-4">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="gap-2"
-                  onClick={handleShare}
-                >
-                  <Share2 className="w-4 h-4" />
-                  Share
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="gap-2"
-                  onClick={handleBookmark}
-                >
-                  <Bookmark className="w-4 h-4" />
-                  Save
-                </Button>
-              </div>
+      {/* Blog Content with Table of Contents */}
+      <article className="container mx-auto px-4 py-16">
+        <div className="flex flex-row-reverse gap-8 relative">
+          {/* Table of Contents */}
+          <TableOfContents content={post.content} />
+          
+          {/* Main Content */}
+          <div className="flex-grow max-w-3xl">
+            <div className="prose prose-lg dark:prose-invert">
+              <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
             </div>
+            
+            {/* Author Info */}
+            <div className="mt-16 p-6 border rounded-lg bg-muted/30">
+              <h3 className="text-lg font-semibold mb-2">About the Author</h3>
+              <p className="text-muted-foreground">{post.author}</p>
+            </div>
+
+            {/* Navigation */}
+            <ArticleNavigation
+              previousPost={{
+                slug: "leveraging-analytics-growth",
+                title: "Leveraging Analytics for Growth"
+              }}
+              nextPost={{
+                slug: "ecommerce-tech-trends-2024",
+                title: "2024 E-commerce Technology Trends"
+              }}
+            />
+
+            {/* Related Posts */}
+            <RelatedPosts posts={relatedPosts} />
           </div>
         </div>
-
-        {/* Blog Content with Table of Contents */}
-        <article className="container mx-auto px-4 py-16">
-          <div className="flex gap-8">
-            <div className="flex-grow max-w-3xl mx-auto">
-              <div className="prose prose-lg dark:prose-invert">
-                <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
-              </div>
-              
-              {/* Author Info */}
-              <div className="mt-16 p-6 border rounded-lg bg-muted/30">
-                <h3 className="text-lg font-semibold mb-2">About the Author</h3>
-                <p className="text-muted-foreground">{post.author}</p>
-              </div>
-
-              {/* Navigation */}
-              <ArticleNavigation
-                previousPost={{
-                  slug: "leveraging-analytics-growth",
-                  title: "Leveraging Analytics for Growth"
-                }}
-                nextPost={{
-                  slug: "ecommerce-tech-trends-2024",
-                  title: "2024 E-commerce Technology Trends"
-                }}
-              />
-
-              {/* Related Posts */}
-              <RelatedPosts posts={relatedPosts} />
-            </div>
-
-            {/* Table of Contents Sidebar */}
-            <TableOfContents content={post.content} />
-          </div>
-        </article>
-      </main>
+      </article>
       
       <BackToTop />
       <Footer />
