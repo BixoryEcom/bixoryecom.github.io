@@ -13,7 +13,7 @@ import { ShareCount } from "@/components/blog/ShareCount";
 
 // This would typically come from an API or CMS
 const blogPosts = {
-  "key-elements-ecom-success": {
+  'key-elements-ecom-success': {
     title: "Key Elements in Building a Successful Ecom Business",
     date: "2024-01-18",
     author: "Bixory Team",
@@ -80,9 +80,8 @@ const blogPosts = {
 </div>
     `,
     coverImage: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80"
-  }
   },
-  "leveraging-analytics-growth": {
+  'leveraging-analytics-growth': {
     title: "Leveraging Analytics for Growth: A Data-Driven Approach to eCommerce Success",
     date: "2024-05-08",
     author: "Data Analytics Team",
