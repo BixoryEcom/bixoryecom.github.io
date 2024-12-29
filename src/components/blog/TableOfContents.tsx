@@ -17,14 +17,13 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
 
   useEffect(() => {
     // Parse content for headings using regex
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(content, 'text/html');
-    const headingElements = doc.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    const headingRegex = /<h([1-6])[^>]*id="([^"]*)"[^>]*>([^<]*)<\/h\1>/g;
+    const matches = Array.from(content.matchAll(headingRegex));
     
-    const items: HeadingItem[] = Array.from(headingElements).map((heading, index) => ({
-      id: heading.id || `heading-${index}`,
-      text: heading.textContent || '',
-      level: parseInt(heading.tagName[1])
+    const items: HeadingItem[] = matches.map((match) => ({
+      id: match[2],
+      text: match[3].trim(),
+      level: parseInt(match[1])
     }));
     
     setHeadings(items);
@@ -66,7 +65,12 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
             }`}
             onClick={(e) => {
               e.preventDefault();
-              document.getElementById(heading.id)?.scrollIntoView({ behavior: 'smooth' });
+              const element = document.getElementById(heading.id);
+              if (element) {
+                const yOffset = -100; // Adjust this value based on your header height
+                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+              }
             }}
           >
             {heading.text}
