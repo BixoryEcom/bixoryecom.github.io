@@ -1,6 +1,6 @@
 const BlogHero = () => {
   return (
-    <div className="relative overflow-hidden min-h-[500px] bg-gradient-to-br from-purple-50 to-gray-50 dark:from-gray-900 dark:to-gray-800">
+    <div className="relative overflow-hidden min-h-[500px] bg-gradient-to-br from-purple-50 to-gray-50 dark:from-gray-900 dark:to-gray-800 pt-16">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0"
@@ -22,7 +22,7 @@ const BlogHero = () => {
       </div>
       
       {/* Content */}
-      <div className="relative z-30 container mx-auto px-4 h-full flex items-center justify-center">
+      <div className="relative z-30 container mx-auto px-4 h-[calc(500px-4rem)] flex items-center justify-center">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-purple-200 to-indigo-200 dark:from-purple-200 dark:to-indigo-200 text-transparent bg-clip-text animate-fade-in">
             Insights & Resources
