@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,7 +16,17 @@ interface ContactFormData {
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormData>();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
@@ -48,7 +58,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header isScrolled={false} />
+      <Header isScrolled={isScrolled} />
       
       <main className="flex-grow container mx-auto px-4 py-24">
         <div className="max-w-2xl mx-auto">

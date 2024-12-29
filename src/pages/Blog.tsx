@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
@@ -15,9 +16,20 @@ const blogPosts = [
 ];
 
 const Blog = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
-      <Header isScrolled={false} />
+      <Header isScrolled={isScrolled} />
       
       <main className="flex-grow container mx-auto px-4 py-24">
         <div className="max-w-5xl mx-auto">
