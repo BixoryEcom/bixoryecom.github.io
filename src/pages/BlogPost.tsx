@@ -23,7 +23,8 @@ const BlogPostPage = () => {
           slug: slug || "",
           readingTime: "5 min read",
           views: 1234,
-          category: "Strategy"
+          category: "Strategy",
+          featured: false
         });
         setContent(html);
       } catch (error) {
