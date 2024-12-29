@@ -30,7 +30,7 @@ const blogPosts: BlogPost[] = [
     author: "Bixory Team",
     excerpt: "Discover the essential components that make up a thriving ecommerce business in today's digital landscape.",
     slug: "key-elements-ecom-success",
-    coverImage: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80",
+    coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80",
     category: "Strategy",
     readingTime: "8 min read",
     featured: true
