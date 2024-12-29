@@ -15,7 +15,6 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-// Mock categories - in a real app, these would come from your CMS or API
 const categories = [
   "All",
   "Strategy",
@@ -27,17 +26,6 @@ const categories = [
 
 // Extended mock blog posts with more content
 const blogPosts = [
-  {
-    title: "Key Elements in Building a Successful Ecom Business",
-    date: "2024-02-20",
-    author: "Bixory Team",
-    excerpt: "Discover the essential components that make up a thriving ecommerce business in today's digital landscape.",
-    slug: "key-elements-ecom-success",
-    coverImage: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80",
-    category: "Strategy",
-    readingTime: "8 min read",
-    featured: true
-  },
   {
     title: "Leveraging Analytics for Growth",
     date: "2024-02-18",
@@ -62,7 +50,7 @@ const blogPosts = [
   },
   {
     title: "Key Elements in Building a Successful Ecom Business",
-    date: "2024-02-20",
+    date: "2024-01-18",
     author: "Bixory Team",
     excerpt: "Discover the essential components that make up a thriving ecommerce business in today's digital landscape.",
     slug: "key-elements-ecom-success",
@@ -89,15 +77,16 @@ const Blog = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Filter posts based on category and search query
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  // Filter and sort posts based on category and search query
+  const filteredPosts = blogPosts
+    .filter(post => {
+      const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
+      const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // Sort by date, newest first
 
-  // Get featured post
   const featuredPost = blogPosts.find(post => post.featured);
   const regularPosts = filteredPosts.filter(post => !post.featured);
 
