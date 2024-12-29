@@ -100,16 +100,11 @@ const blogPosts = {
     Successful eCommerce businesses track and analyze specific metrics that directly impact their bottom line. Here are the essential KPIs to monitor:
   </p>
   <div class="bg-accent/20 p-6 rounded-lg mb-8">
-    <div class="w-full h-[300px]" id="kpi-chart">
-      <!-- Chart will be rendered here -->
-      <iframe
-        style="background: #FFFFFF;"
-        width="100%"
-        height="300"
-        src="https://charts-demos.vercel.app/analytics-kpi-chart"
-        frameBorder="0"
-      ></iframe>
-    </div>
+    <img 
+      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" 
+      alt="Analytics Dashboard showing KPIs"
+      class="w-full h-auto rounded-lg shadow-lg"
+    />
     <p class="text-sm text-muted-foreground mt-2">Key Performance Indicators in eCommerce</p>
   </div>
 
@@ -124,48 +119,20 @@ const blogPosts = {
     <li>Measure the effectiveness of marketing campaigns</li>
   </ul>
 
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">3. Predictive Analytics and Machine Learning</h2>
+  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">3. Real-Time Analytics</h2>
   <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-    Advanced analytics powered by machine learning can help predict future trends and customer behavior. Key applications include:
-  </p>
-  <div class="grid md:grid-cols-2 gap-6 mb-8">
-    <div class="p-4 border rounded-lg">
-      <h3 class="font-semibold mb-2">Demand Forecasting</h3>
-      <p class="text-sm text-muted-foreground">Predict inventory needs and optimize stock levels</p>
-    </div>
-    <div class="p-4 border rounded-lg">
-      <h3 class="font-semibold mb-2">Customer Segmentation</h3>
-      <p class="text-sm text-muted-foreground">Create targeted marketing campaigns</p>
-    </div>
-    <div class="p-4 border rounded-lg">
-      <h3 class="font-semibold mb-2">Price Optimization</h3>
-      <p class="text-sm text-muted-foreground">Determine optimal pricing strategies</p>
-    </div>
-    <div class="p-4 border rounded-lg">
-      <h3 class="font-semibold mb-2">Churn Prevention</h3>
-      <p class="text-sm text-muted-foreground">Identify and retain at-risk customers</p>
-    </div>
-  </div>
-
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">4. Real-Time Analytics</h2>
-  <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-    Real-time analytics enables immediate response to changing market conditions and customer behavior. Consider implementing:
+    Real-time analytics enables immediate response to changing market conditions and customer behavior. Here's a visualization of real-time customer behavior:
   </p>
   <div class="bg-accent/20 p-6 rounded-lg mb-8">
-    <div class="w-full h-[300px]" id="realtime-chart">
-      <!-- Chart will be rendered here -->
-      <iframe
-        style="background: #FFFFFF;"
-        width="100%"
-        height="300"
-        src="https://charts-demos.vercel.app/analytics-realtime-chart"
-        frameBorder="0"
-      ></iframe>
-    </div>
+    <img 
+      src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" 
+      alt="Real-time analytics dashboard"
+      class="w-full h-auto rounded-lg shadow-lg"
+    />
     <p class="text-sm text-muted-foreground mt-2">Real-time Customer Behavior Analysis</p>
   </div>
 
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">5. Data-Driven Decision Making Framework</h2>
+  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">4. Data-Driven Decision Making Framework</h2>
   <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
     Implement a structured approach to using analytics for decision making:
   </p>
@@ -309,3 +276,4 @@ const BlogPost = () => {
 };
 
 export default BlogPost;
+
