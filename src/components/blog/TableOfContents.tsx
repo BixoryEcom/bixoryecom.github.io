@@ -49,6 +49,21 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
     return () => observer.disconnect();
   }, [headings]);
 
+  const getIndentClass = (level: number) => {
+    switch (level) {
+      case 1:
+        return 'pl-0';
+      case 2:
+        return 'pl-4';
+      case 3:
+        return 'pl-8';
+      case 4:
+        return 'pl-12';
+      default:
+        return 'pl-4';
+    }
+  };
+
   return (
     <div className="hidden lg:block sticky top-24 w-64 ml-8 space-y-2">
       <div className="flex items-center gap-2 text-lg font-semibold mb-4">
@@ -62,7 +77,7 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
             href={`#${heading.id}`}
             className={`
               block text-sm py-1
-              ${heading.level === 1 ? 'pl-0' : `pl-${(heading.level - 1) * 4}`}
+              ${getIndentClass(heading.level)}
               hover:text-primary transition-colors
               ${activeId === heading.id ? 'text-primary font-medium' : 'text-muted-foreground'}
             `}
