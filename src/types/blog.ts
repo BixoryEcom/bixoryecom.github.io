@@ -9,5 +9,4 @@ export interface BlogPost {
   readingTime?: string;
   views?: number;
   content?: string;
-  featured?: boolean;
 }
