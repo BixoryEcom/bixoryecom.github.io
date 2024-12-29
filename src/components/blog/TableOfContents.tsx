@@ -22,7 +22,7 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
     
     const items: HeadingItem[] = matches.map((match) => ({
       id: match[2],
-      text: match[3].trim(),
+      text: match[3].replace(/^\d+\.\s*/, '').trim(), // Remove numbering from the text
       level: parseInt(match[1])
     }));
     
@@ -60,9 +60,12 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
           <a
             key={heading.id}
             href={`#${heading.id}`}
-            className={`block text-sm py-1 pl-${(heading.level - 1) * 4} hover:text-primary transition-colors ${
-              activeId === heading.id ? 'text-primary font-medium' : 'text-muted-foreground'
-            }`}
+            className={`
+              block text-sm py-1
+              ${heading.level === 1 ? 'pl-0' : `pl-${(heading.level - 1) * 4}`}
+              hover:text-primary transition-colors
+              ${activeId === heading.id ? 'text-primary font-medium' : 'text-muted-foreground'}
+            `}
             onClick={(e) => {
               e.preventDefault();
               const element = document.getElementById(heading.id);
