@@ -2,18 +2,18 @@ import { useParams, Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { format } from "date-fns";
-import { Calendar, Clock, Share2, Bookmark, Eye, ArrowLeft } from "lucide-react";
+import { ArrowLeft, Share2, Bookmark } from "lucide-react";
 import { toast } from "sonner";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { ArticleNavigation } from "@/components/blog/ArticleNavigation";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { BackToTop } from "@/components/blog/BackToTop";
-import { ShareCount } from "@/components/blog/ShareCount";
+import { BlogHeader } from "@/components/blog/BlogHeader";
+import { BlogContent } from "@/components/blog/BlogContent";
 
 // This would typically come from an API or CMS
 const blogPosts = {
-  "key-elements-ecom-success": {
+  'key-elements-ecom-success': {
     title: "Key Elements in Building a Successful Ecom Business",
     date: "2024-01-18",
     author: "Bixory Team",
@@ -80,9 +80,8 @@ const blogPosts = {
 </div>
     `,
     coverImage: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80"
-  }
   },
-  "leveraging-analytics-growth": {
+  'leveraging-analytics-growth': {
     title: "Leveraging Analytics for Growth: A Data-Driven Approach to eCommerce Success",
     date: "2024-05-08",
     author: "Data Analytics Team",
@@ -196,7 +195,7 @@ const BlogPost = () => {
   const handleShare = async () => {
     try {
       await navigator.share({
-        title: post.title,
+        title: post?.title,
         text: "Check out this interesting article!",
         url: window.location.href,
       });
@@ -217,22 +216,6 @@ const BlogPost = () => {
     });
   };
 
-  // Mock data for related posts
-  const relatedPosts = [
-    {
-      slug: "leveraging-analytics-growth",
-      title: "Leveraging Analytics for Growth",
-      excerpt: "Learn how to use data analytics to drive business decisions and accelerate growth.",
-      category: "Analytics"
-    },
-    {
-      slug: "ecommerce-tech-trends-2024",
-      title: "2024 E-commerce Technology Trends",
-      excerpt: "Stay ahead of the curve with these emerging e-commerce technology trends.",
-      category: "Technology"
-    }
-  ];
-
   if (!post) {
     return <div>Blog post not found</div>;
   }
@@ -242,35 +225,7 @@ const BlogPost = () => {
       <ReadingProgress />
       <Header isScrolled={false} />
       
-      {/* Hero Section */}
-      <div className="relative h-[60vh] min-h-[400px] w-full">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${post.coverImage})` }}
-        >
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-white container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center max-w-4xl mb-6">
-            {post.title}
-          </h1>
-          <div className="flex flex-wrap items-center gap-6 text-lg opacity-90">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-5 h-5" />
-              <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5" />
-              <span>{post.readingTime}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Eye className="w-5 h-5" />
-              <span>{post.views.toLocaleString()} views</span>
-            </div>
-            <ShareCount count={42} />
-          </div>
-        </div>
-      </div>
+      <BlogHeader {...post} />
 
       {/* Article Actions */}
       <div className="sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10 border-b">
@@ -307,9 +262,7 @@ const BlogPost = () => {
       {/* Blog Content */}
       <article className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto">
-          <div className="prose prose-lg dark:prose-invert">
-            <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
-          </div>
+          <BlogContent content={post.content} />
           
           {/* Author Info */}
           <div className="mt-16 p-6 border rounded-lg bg-muted/30">
@@ -330,7 +283,22 @@ const BlogPost = () => {
           />
 
           {/* Related Posts */}
-          <RelatedPosts posts={relatedPosts} />
+          <RelatedPosts
+            posts={[
+              {
+                slug: "leveraging-analytics-growth",
+                title: "Leveraging Analytics for Growth",
+                excerpt: "Learn how to use data analytics to drive business decisions and accelerate growth.",
+                category: "Analytics"
+              },
+              {
+                slug: "ecommerce-tech-trends-2024",
+                title: "2024 E-commerce Technology Trends",
+                excerpt: "Stay ahead of the curve with these emerging e-commerce technology trends.",
+                category: "Technology"
+              }
+            ]}
+          />
         </div>
       </article>
       
