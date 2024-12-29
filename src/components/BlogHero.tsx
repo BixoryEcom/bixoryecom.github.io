@@ -8,7 +8,7 @@ const BlogHero = () => {
       <div 
         className="absolute inset-0 z-0 transition-opacity duration-1000"
         style={{
-          backgroundImage: `url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80")`,
+          backgroundImage: `url("/lovable-uploads/25b5a04f-9e9b-46b8-8917-f5dd25bdc38b.png")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 1
