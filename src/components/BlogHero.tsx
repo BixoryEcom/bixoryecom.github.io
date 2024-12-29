@@ -5,9 +5,9 @@ const BlogHero = () => {
     <div className="relative overflow-hidden min-h-[500px] pt-16">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 z-0 transition-opacity duration-1000"
+        className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url("/lovable-uploads/25b5a04f-9e9b-46b8-8917-f5dd25bdc38b.png")`,
+          backgroundImage: 'url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 1
