@@ -16,14 +16,14 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
-    // Parse content for headings using regex
-    const headingRegex = /<h([1-6])[^>]*id="([^"]*)"[^>]*>([^<]*)<\/h\1>/g;
+    // Parse markdown headings using regex
+    const headingRegex = /^(#{1,6})\s+(.+?)\s*(?:{#([^}]+)})?$/gm;
     const matches = Array.from(content.matchAll(headingRegex));
     
     const items: HeadingItem[] = matches.map((match) => ({
-      id: match[2],
-      text: match[3].replace(/^\d+\.\s*/, '').trim(), // Remove numbering from the text
-      level: parseInt(match[1])
+      id: match[3] || match[2].toLowerCase().replace(/[^\w]+/g, '-'),
+      text: match[2].replace(/^\d+\.\s*/, '').trim(), // Remove numbering from the text
+      level: match[1].length // Count the number of # symbols
     }));
     
     setHeadings(items);
@@ -85,7 +85,7 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
               e.preventDefault();
               const element = document.getElementById(heading.id);
               if (element) {
-                const yOffset = -100; // Adjust this value based on your header height
+                const yOffset = -100;
                 const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
                 window.scrollTo({ top: y, behavior: 'smooth' });
               }
