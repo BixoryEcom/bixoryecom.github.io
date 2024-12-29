@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import BlogCard from "@/components/BlogCard";
 import BlogHero from "@/components/BlogHero";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Search } from "lucide-react";
+import { FeaturedPosts } from "@/components/blog/FeaturedPosts";
+import { FilteredPosts } from "@/components/blog/FilteredPosts";
 import {
   Pagination,
   PaginationContent,
@@ -14,6 +12,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { BlogPost } from "@/types/blog";
 
 const categories = [
   "All",
@@ -24,7 +23,7 @@ const categories = [
   "Success Stories"
 ];
 
-const blogPosts = [
+const blogPosts: BlogPost[] = [
   {
     title: "Key Elements in Building a Successful Ecom Business",
     date: "2024-01-18",
@@ -76,7 +75,7 @@ const Blog = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Filter and sort posts based on category and search query
+  // Filter posts based on category and search query
   const filteredPosts = blogPosts
     .filter(post => {
       const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
@@ -87,13 +86,12 @@ const Blog = () => {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const featuredPosts = blogPosts.filter(post => post.featured);
-  const regularPosts = filteredPosts.filter(post => !post.featured);
 
   // Pagination
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = regularPosts.slice(indexOfFirstPost, indexOfLastPost);
-  const totalPages = Math.ceil(regularPosts.length / postsPerPage);
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -102,80 +100,21 @@ const Blog = () => {
       <main className="flex-grow">
         <BlogHero />
         
-        <div className="container mx-auto px-4 py-16">
-          <div className="max-w-7xl mx-auto space-y-12">
-            {/* Featured Posts */}
-            {featuredPosts.length > 0 && (
-              <div className="animate-fade-in">
-                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Featured Posts</h2>
-                <div className="grid md:grid-cols-2 gap-8">
-                  {featuredPosts.map((post) => (
-                    <div key={post.slug} className="group bg-accent/20 rounded-lg overflow-hidden">
-                      <div className="aspect-video relative overflow-hidden">
-                        <img 
-                          src={post.coverImage} 
-                          alt={post.title}
-                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="p-6">
-                        <div className="flex items-center justify-between gap-2 mb-3">
-                          <Badge variant="secondary" className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-100">
-                            {post.category}
-                          </Badge>
-                          <span className="text-sm text-muted-foreground">{post.readingTime}</span>
-                        </div>
-                        <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                          {post.title}
-                        </h3>
-                        <p className="text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>
-                        <div className="flex items-center justify-between text-sm text-muted-foreground">
-                          <span>{post.author}</span>
-                          <time>{new Date(post.date).toLocaleDateString()}</time>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+        <div className="space-y-0">
+          <FeaturedPosts posts={featuredPosts} />
+          
+          <FilteredPosts
+            posts={currentPosts}
+            categories={categories}
+            selectedCategory={selectedCategory}
+            searchQuery={searchQuery}
+            onCategoryChange={setSelectedCategory}
+            onSearchChange={setSearchQuery}
+          />
 
-            {/* Search and Filters */}
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-between animate-fade-in">
-              <div className="relative w-full md:w-64">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                <Input
-                  type="search"
-                  placeholder="Search articles..."
-                  className="pl-10"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
-                  <Badge
-                    key={category}
-                    variant={selectedCategory === category ? "default" : "secondary"}
-                    className="cursor-pointer hover:bg-primary/90 transition-colors"
-                    onClick={() => setSelectedCategory(category)}
-                  >
-                    {category}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            {/* Blog Posts Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
-              {currentPosts.map((post) => (
-                <BlogCard key={post.slug} {...post} />
-              ))}
-            </div>
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <Pagination className="mt-8">
+          {totalPages > 1 && (
+            <div className="py-8 bg-gray-50 dark:bg-gray-900/50">
+              <Pagination className="justify-center">
                 <PaginationContent>
                   <PaginationItem>
                     <PaginationPrevious 
@@ -201,8 +140,8 @@ const Blog = () => {
                   </PaginationItem>
                 </PaginationContent>
               </Pagination>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </main>
       
