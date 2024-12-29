@@ -3,14 +3,23 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
-import { ArrowLeft } from "lucide-react";
+import { Calendar, Clock, Share2, Bookmark, Eye, ArrowLeft } from "lucide-react";
+import { toast } from "sonner";
+import { TableOfContents } from "@/components/blog/TableOfContents";
+import { ReadingProgress } from "@/components/blog/ReadingProgress";
+import { ArticleNavigation } from "@/components/blog/ArticleNavigation";
+import { RelatedPosts } from "@/components/blog/RelatedPosts";
+import { BackToTop } from "@/components/blog/BackToTop";
+import { ShareCount } from "@/components/blog/ShareCount";
 
 // This would typically come from an API or CMS
 const blogPosts = {
   "key-elements-ecom-success": {
     title: "Key Elements in Building a Successful Ecom Business",
-    date: "2024-02-20",
+    date: "2024-01-18",
     author: "Bixory Team",
+    readingTime: "8 min read",
+    views: 1205,
     content: `
 <div class="blog-content">
   <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100">Key Elements in Building a Successful Ecom Business</h1>
@@ -83,12 +92,53 @@ const BlogPost = () => {
     return <div>Blog post not found</div>;
   }
 
+  const handleShare = async () => {
+    try {
+      await navigator.share({
+        title: post.title,
+        text: "Check out this interesting article!",
+        url: window.location.href,
+      });
+    } catch (error) {
+      toast.info("Copy link to clipboard instead", {
+        description: window.location.href,
+        action: {
+          label: "Copy",
+          onClick: () => navigator.clipboard.writeText(window.location.href)
+        },
+      });
+    }
+  };
+
+  const handleBookmark = () => {
+    toast.success("Article bookmarked!", {
+      description: "You can find it in your saved articles."
+    });
+  };
+
+  // Mock data for related posts
+  const relatedPosts = [
+    {
+      slug: "leveraging-analytics-growth",
+      title: "Leveraging Analytics for Growth",
+      excerpt: "Learn how to use data analytics to drive business decisions and accelerate growth.",
+      category: "Analytics"
+    },
+    {
+      slug: "ecommerce-tech-trends-2024",
+      title: "2024 E-commerce Technology Trends",
+      excerpt: "Stay ahead of the curve with these emerging e-commerce technology trends.",
+      category: "Technology"
+    }
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
+      <ReadingProgress />
       <Header isScrolled={false} />
       
       <main className="flex-grow">
-        {/* Hero Section with Cover Image and Title */}
+        {/* Hero Section */}
         <div className="relative h-[60vh] min-h-[400px] w-full">
           <div 
             className="absolute inset-0 bg-cover bg-center"
@@ -97,40 +147,96 @@ const BlogPost = () => {
             <div className="absolute inset-0 bg-black/50" />
           </div>
           <div className="absolute inset-0 flex flex-col justify-center items-center text-white container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center max-w-4xl">
+            <h1 className="text-4xl md:text-5xl font-bold text-center max-w-4xl mb-6">
               {post.title}
             </h1>
-            <div className="mt-6 flex items-center gap-4 text-lg">
-              <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
-              <span>•</span>
-              <span>{post.author}</span>
+            <div className="flex flex-wrap items-center gap-6 text-lg opacity-90">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-5 h-5" />
+                <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5" />
+                <span>{post.readingTime}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Eye className="w-5 h-5" />
+                <span>{post.views.toLocaleString()} views</span>
+              </div>
+              <ShareCount count={42} /> {/* Mock share count */}
             </div>
           </div>
         </div>
 
-        {/* Blog Content */}
-        <article className="container mx-auto px-4 py-16">
-          <div className="max-w-3xl mx-auto">
-            <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
-            
-            {/* Back to Blog List Button */}
-            <div className="mt-16 flex justify-center">
-              <Button
-                variant="outline"
-                size="lg"
-                asChild
-                className="gap-2"
-              >
-                <Link to="/blog">
-                  <ArrowLeft className="w-4 h-4" />
-                  Back to Blog List
-                </Link>
-              </Button>
+        {/* Article Actions */}
+        <div className="sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10 border-b">
+          <div className="container mx-auto px-4 py-3">
+            <div className="flex justify-between items-center max-w-3xl mx-auto">
+              <Link to="/blog" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Blog
+              </Link>
+              <div className="flex items-center gap-4">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="gap-2"
+                  onClick={handleShare}
+                >
+                  <Share2 className="w-4 h-4" />
+                  Share
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="gap-2"
+                  onClick={handleBookmark}
+                >
+                  <Bookmark className="w-4 h-4" />
+                  Save
+                </Button>
+              </div>
             </div>
+          </div>
+        </div>
+
+        {/* Blog Content with Table of Contents */}
+        <article className="container mx-auto px-4 py-16">
+          <div className="flex gap-8">
+            <div className="flex-grow max-w-3xl mx-auto">
+              <div className="prose prose-lg dark:prose-invert">
+                <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
+              </div>
+              
+              {/* Author Info */}
+              <div className="mt-16 p-6 border rounded-lg bg-muted/30">
+                <h3 className="text-lg font-semibold mb-2">About the Author</h3>
+                <p className="text-muted-foreground">{post.author}</p>
+              </div>
+
+              {/* Navigation */}
+              <ArticleNavigation
+                previousPost={{
+                  slug: "leveraging-analytics-growth",
+                  title: "Leveraging Analytics for Growth"
+                }}
+                nextPost={{
+                  slug: "ecommerce-tech-trends-2024",
+                  title: "2024 E-commerce Technology Trends"
+                }}
+              />
+
+              {/* Related Posts */}
+              <RelatedPosts posts={relatedPosts} />
+            </div>
+
+            {/* Table of Contents Sidebar */}
+            <TableOfContents content={post.content} />
           </div>
         </article>
       </main>
       
+      <BackToTop />
       <Footer />
     </div>
   );
