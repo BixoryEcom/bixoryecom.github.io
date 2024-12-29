@@ -19,7 +19,7 @@ const blogPosts = {
     author: "Bixory Team",
     readingTime: "8 min read",
     views: 1205,
-    coverImage: "/lovable-uploads/25b5a04f-9e9b-46b8-8917-f5dd25bdc38b.png",
+    coverImage: "/lovable-uploads/75077a16-8656-455f-8daa-51d5e16742ea.png",
     content: `
 <div class="blog-content">
   <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100">Key Elements in Building a Successful Ecom Business</h1>
