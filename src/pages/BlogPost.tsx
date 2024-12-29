@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { Calendar, Clock, Share2, Bookmark, Eye, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
-import { TableOfContents } from "@/components/blog/TableOfContents";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { ArticleNavigation } from "@/components/blog/ArticleNavigation";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
@@ -162,7 +161,7 @@ const BlogPost = () => {
               <Eye className="w-5 h-5" />
               <span>{post.views.toLocaleString()} views</span>
             </div>
-            <ShareCount count={42} /> {/* Mock share count */}
+            <ShareCount count={42} />
           </div>
         </div>
       </div>
@@ -199,39 +198,33 @@ const BlogPost = () => {
         </div>
       </div>
 
-      {/* Blog Content with Table of Contents */}
+      {/* Blog Content */}
       <article className="container mx-auto px-4 py-16">
-        <div className="flex flex-row-reverse gap-8 relative">
-          {/* Table of Contents */}
-          <TableOfContents content={post.content} />
-          
-          {/* Main Content */}
-          <div className="flex-grow max-w-3xl">
-            <div className="prose prose-lg dark:prose-invert">
-              <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
-            </div>
-            
-            {/* Author Info */}
-            <div className="mt-16 p-6 border rounded-lg bg-muted/30">
-              <h3 className="text-lg font-semibold mb-2">About the Author</h3>
-              <p className="text-muted-foreground">{post.author}</p>
-            </div>
-
-            {/* Navigation */}
-            <ArticleNavigation
-              previousPost={{
-                slug: "leveraging-analytics-growth",
-                title: "Leveraging Analytics for Growth"
-              }}
-              nextPost={{
-                slug: "ecommerce-tech-trends-2024",
-                title: "2024 E-commerce Technology Trends"
-              }}
-            />
-
-            {/* Related Posts */}
-            <RelatedPosts posts={relatedPosts} />
+        <div className="max-w-3xl mx-auto">
+          <div className="prose prose-lg dark:prose-invert">
+            <div className="markdown-content" dangerouslySetInnerHTML={{ __html: post.content }} />
           </div>
+          
+          {/* Author Info */}
+          <div className="mt-16 p-6 border rounded-lg bg-muted/30">
+            <h3 className="text-lg font-semibold mb-2">About the Author</h3>
+            <p className="text-muted-foreground">{post.author}</p>
+          </div>
+
+          {/* Navigation */}
+          <ArticleNavigation
+            previousPost={{
+              slug: "leveraging-analytics-growth",
+              title: "Leveraging Analytics for Growth"
+            }}
+            nextPost={{
+              slug: "ecommerce-tech-trends-2024",
+              title: "2024 E-commerce Technology Trends"
+            }}
+          />
+
+          {/* Related Posts */}
+          <RelatedPosts posts={relatedPosts} />
         </div>
       </article>
       
