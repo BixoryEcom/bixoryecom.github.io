@@ -16,16 +16,17 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
-    // Parse content for headings using regex
-    const headingRegex = /<h([1-6])[^>]*id="([^"]*)"[^>]*>([^<]*)<\/h\1>/g;
+    // Parse content for h1 and h2 tags with their IDs
+    const headingRegex = /<h([12])[^>]*id="([^"]*)"[^>]*>([^<]*)<\/h\1>/g;
     const matches = Array.from(content.matchAll(headingRegex));
     
     const items: HeadingItem[] = matches.map((match) => ({
+      level: parseInt(match[1]),
       id: match[2],
-      text: match[3].replace(/^\d+\.\s*/, '').trim(), // Remove numbering from the text
-      level: parseInt(match[1])
+      text: match[3].trim()
     }));
-    
+
+    console.log("Found headings:", items); // Debug log
     setHeadings(items);
   }, [content]);
 
@@ -49,20 +50,10 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
     return () => observer.disconnect();
   }, [headings]);
 
-  const getIndentClass = (level: number) => {
-    switch (level) {
-      case 1:
-        return 'pl-0';
-      case 2:
-        return 'pl-4';
-      case 3:
-        return 'pl-8';
-      case 4:
-        return 'pl-12';
-      default:
-        return 'pl-4';
-    }
-  };
+  if (headings.length === 0) {
+    console.log("No headings found in content"); // Debug log
+    return null;
+  }
 
   return (
     <div className="hidden lg:block sticky top-24 w-64 ml-8 space-y-2">
@@ -77,7 +68,7 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
             href={`#${heading.id}`}
             className={`
               block text-sm py-1
-              ${getIndentClass(heading.level)}
+              ${heading.level === 1 ? 'pl-0' : 'pl-4'}
               hover:text-primary transition-colors
               ${activeId === heading.id ? 'text-primary font-medium' : 'text-muted-foreground'}
             `}
