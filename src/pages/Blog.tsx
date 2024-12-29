@@ -27,6 +27,17 @@ const categories = [
 // Extended mock blog posts with more content
 const blogPosts = [
   {
+    title: "Key Elements in Building a Successful Ecom Business",
+    date: "2024-01-18",
+    author: "Bixory Team",
+    excerpt: "Discover the essential components that make up a thriving ecommerce business in today's digital landscape.",
+    slug: "key-elements-ecom-success",
+    coverImage: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80",
+    category: "Strategy",
+    readingTime: "8 min read",
+    featured: true
+  },
+  {
     title: "Leveraging Analytics for Growth",
     date: "2024-02-18",
     author: "Data Team",
@@ -46,17 +57,6 @@ const blogPosts = [
     coverImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80",
     category: "Technology",
     readingTime: "5 min read",
-    featured: false
-  },
-  {
-    title: "Key Elements in Building a Successful Ecom Business",
-    date: "2024-01-18",
-    author: "Bixory Team",
-    excerpt: "Discover the essential components that make up a thriving ecommerce business in today's digital landscape.",
-    slug: "key-elements-ecom-success",
-    coverImage: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80",
-    category: "Strategy",
-    readingTime: "8 min read",
     featured: false
   }
 ];
@@ -87,7 +87,7 @@ const Blog = () => {
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // Sort by date, newest first
 
-  const featuredPost = blogPosts.find(post => post.featured);
+  const featuredPosts = blogPosts.filter(post => post.featured);
   const regularPosts = filteredPosts.filter(post => !post.featured);
 
   // Pagination
@@ -105,21 +105,23 @@ const Blog = () => {
         
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-7xl mx-auto space-y-12">
-            {/* Featured Post */}
-            {featuredPost && (
+            {/* Featured Posts */}
+            {featuredPosts.length > 0 && (
               <div className="animate-fade-in">
-                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Featured Post</h2>
-                <div className="grid md:grid-cols-2 gap-8 bg-accent/20 rounded-lg p-6">
-                  <div className="aspect-video relative overflow-hidden rounded-lg">
-                    <img 
-                      src={featuredPost.coverImage} 
-                      alt={featuredPost.title}
-                      className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-center">
-                    <BlogCard {...featuredPost} />
-                  </div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Featured Posts</h2>
+                <div className="grid md:grid-cols-2 gap-8">
+                  {featuredPosts.map((post) => (
+                    <div key={post.slug} className="bg-accent/20 rounded-lg p-6">
+                      <div className="aspect-video relative overflow-hidden rounded-lg mb-6">
+                        <img 
+                          src={post.coverImage} 
+                          alt={post.title}
+                          className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <BlogCard {...post} />
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
