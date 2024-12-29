@@ -19,6 +19,7 @@ const blogPosts = {
     author: "Bixory Team",
     readingTime: "8 min read",
     views: 1205,
+    coverImage: "/lovable-uploads/25b5a04f-9e9b-46b8-8917-f5dd25bdc38b.png",
     content: `
 <div class="blog-content">
   <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100">Key Elements in Building a Successful Ecom Business</h1>
@@ -78,8 +79,7 @@ const blogPosts = {
     </p>
   </div>
 </div>
-    `,
-    coverImage: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80"
+    `
   },
   'leveraging-analytics-growth': {
     title: "Leveraging Analytics for Growth: A Data-Driven Approach to eCommerce Success",
@@ -276,4 +276,3 @@ const BlogPost = () => {
 };
 
 export default BlogPost;
-
