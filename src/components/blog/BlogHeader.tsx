@@ -1,59 +1,42 @@
-import React from 'react';
-import { CalendarDays, Clock, Eye } from 'lucide-react';
+import { Calendar, Clock, Eye } from "lucide-react";
+import { format } from "date-fns";
+import { ShareCount } from "./ShareCount";
 
 interface BlogHeaderProps {
   title: string;
   date: string;
-  readingTime?: string;
-  views?: number;
-  coverImage?: string;
+  readingTime: string;
+  views: number;
+  coverImage: string;
 }
 
 export const BlogHeader = ({ title, date, readingTime, views, coverImage }: BlogHeaderProps) => {
   return (
-    <div className="relative overflow-hidden min-h-[500px] flex items-center justify-center">
-      {/* Background Image */}
+    <div className="relative h-[60vh] min-h-[400px] w-full">
       <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url("${coverImage}")`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-      
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/60 z-10" />
-
-      {/* Content */}
-      <div className="relative z-20 container mx-auto px-4 text-center text-white">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 max-w-4xl mx-auto">
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${coverImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" /> {/* Darkened overlay */}
+      </div>
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-white container mx-auto px-4">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center max-w-4xl mb-8">
           {title}
         </h1>
-        
-        <div className="flex items-center justify-center gap-6 text-white/90 text-sm md:text-base">
+        <div className="flex flex-wrap items-center justify-center gap-6 text-sm md:text-base opacity-90">
           <div className="flex items-center gap-2">
-            <CalendarDays className="w-4 h-4" />
-            <span>{new Date(date).toLocaleDateString('en-US', { 
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}</span>
+            <Calendar className="w-4 h-4" />
+            <span>{format(new Date(date), "MMMM d, yyyy")}</span>
           </div>
-          
-          {readingTime && (
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              <span>{readingTime}</span>
-            </div>
-          )}
-          
-          {views && (
-            <div className="flex items-center gap-2">
-              <Eye className="w-4 h-4" />
-              <span>{views.toLocaleString()} views</span>
-            </div>
-          )}
+          <div className="flex items-center gap-2">
+            <Clock className="w-4 h-4" />
+            <span>{readingTime}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Eye className="w-4 h-4" />
+            <span>{views.toLocaleString()} views</span>
+          </div>
+          <ShareCount count={42} />
         </div>
       </div>
     </div>

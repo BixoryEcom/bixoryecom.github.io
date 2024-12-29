@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from './ui/button';
 
 const BlogHero = () => {
   return (
