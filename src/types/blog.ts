@@ -5,8 +5,7 @@ export interface BlogPost {
   excerpt: string;
   slug: string;
   coverImage: string;
-  category?: string;
-  readingTime?: string;
-  views?: number;
-  content?: string;
+  category: string;
+  readingTime: string;
+  featured?: boolean;
 }
