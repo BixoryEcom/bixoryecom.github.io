@@ -46,23 +46,43 @@ const HeroSection = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${image})` }}
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/60" />
         </div>
       ))}
 
       {/* Neural Network Pattern Overlay */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-float">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-indigo-500/20 mix-blend-overlay" />
+        {/* Larger, more visible floating shapes */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-float">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/40 to-indigo-500/40 mix-blend-overlay" />
         </div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-float-delayed">
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 mix-blend-overlay" />
+        <div className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] bg-indigo-500/30 rounded-full blur-3xl animate-float-delayed">
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/40 to-purple-500/40 mix-blend-overlay" />
         </div>
-        {/* Neural Network Lines */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-purple-200 to-transparent left-1/4 transform -skew-x-12" />
-          <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-indigo-200 to-transparent left-2/4 transform skew-x-12" />
-          <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-purple-200 to-transparent left-3/4 transform -skew-x-12" />
+
+        {/* Additional floating elements */}
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-blue-500/20 rounded-full blur-2xl animate-float">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 mix-blend-overlay" />
+        </div>
+
+        {/* Enhanced Neural Network Lines */}
+        <div className="absolute inset-0 opacity-50">
+          {/* Vertical lines */}
+          <div className="absolute w-[2px] h-full bg-gradient-to-b from-transparent via-purple-300 to-transparent left-1/4 transform -skew-x-12" />
+          <div className="absolute w-[2px] h-full bg-gradient-to-b from-transparent via-indigo-300 to-transparent left-2/4 transform skew-x-12" />
+          <div className="absolute w-[2px] h-full bg-gradient-to-b from-transparent via-blue-300 to-transparent left-3/4 transform -skew-x-12" />
+          
+          {/* Horizontal connecting lines */}
+          <div className="absolute h-[2px] w-full bg-gradient-to-r from-transparent via-purple-300 to-transparent top-1/4 transform -skew-y-12" />
+          <div className="absolute h-[2px] w-full bg-gradient-to-r from-transparent via-indigo-300 to-transparent top-2/4 transform skew-y-12" />
+          <div className="absolute h-[2px] w-full bg-gradient-to-r from-transparent via-blue-300 to-transparent top-3/4 transform -skew-y-12" />
+        </div>
+
+        {/* Animated dots at intersections */}
+        <div className="absolute inset-0">
+          <div className="absolute left-1/4 top-1/4 w-3 h-3 bg-purple-400 rounded-full animate-pulse" />
+          <div className="absolute left-2/4 top-2/4 w-3 h-3 bg-indigo-400 rounded-full animate-pulse" />
+          <div className="absolute left-3/4 top-3/4 w-3 h-3 bg-blue-400 rounded-full animate-pulse" />
         </div>
       </div>
 
