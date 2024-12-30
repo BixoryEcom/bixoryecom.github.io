@@ -11,153 +11,22 @@ import { BackToTop } from "@/components/blog/BackToTop";
 import { BlogHeader } from "@/components/blog/BlogHeader";
 import { BlogContent } from "@/components/blog/BlogContent";
 
-// This would typically come from an API or CMS
-const blogPosts = {
-  'key-elements-ecom-success': {
-    title: "Key Elements in Building a Successful Ecom Business",
-    date: "2024-01-18",
-    author: "Bixory Team",
-    readingTime: "8 min read",
-    views: 1205,
-    content: `
-<div class="blog-content">
-  <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100">Key Elements in Building a Successful Ecom Business</h1>
-
-  <p class="text-lg mb-8 text-gray-700 dark:text-gray-300 leading-relaxed">
-    In today's rapidly evolving digital marketplace, building a successful ecommerce business requires a careful blend of strategy, technology, and customer-centric thinking. Let's explore the key elements that can make or break your online retail venture.
-  </p>
-
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">1. User-Centric Design</h2>
-  <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">Your ecommerce platform should prioritize user experience above all else. This means:</p>
-  <ul class="list-disc pl-6 mb-8 space-y-2 text-gray-700 dark:text-gray-300">
-    <li>Intuitive navigation that guides users naturally through your site</li>
-    <li>Mobile-first design ensuring seamless experiences across all devices</li>
-    <li>Fast loading times to minimize bounce rates</li>
-    <li>Clear product presentations with high-quality images and detailed descriptions</li>
-  </ul>
-
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">2. Robust Technology Stack</h2>
-  <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">Choose technology that scales with your business:</p>
-  <ul class="list-disc pl-6 mb-8 space-y-2 text-gray-700 dark:text-gray-300">
-    <li>Reliable hosting infrastructure with excellent uptime</li>
-    <li>Secure payment processing systems protecting customer data</li>
-    <li>Comprehensive inventory management systems</li>
-    <li>Advanced analytics tools for data-driven decisions</li>
-  </ul>
-
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">3. Marketing Strategy</h2>
-  <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">Develop a comprehensive marketing approach that includes:</p>
-  <ul class="list-disc pl-6 mb-8 space-y-2 text-gray-700 dark:text-gray-300">
-    <li>SEO optimization for better organic reach</li>
-    <li>Strategic social media presence across relevant platforms</li>
-    <li>Targeted email marketing campaigns</li>
-    <li>Engaging content marketing that adds value</li>
-  </ul>
-
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">4. Customer Service</h2>
-  <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">Excellence in customer service builds loyalty through:</p>
-  <ul class="list-disc pl-6 mb-8 space-y-2 text-gray-700 dark:text-gray-300">
-    <li>Quick response times to customer inquiries</li>
-    <li>Multiple contact channels for accessibility</li>
-    <li>Clear, customer-friendly return policies</li>
-    <li>Personal touch in all communications</li>
-  </ul>
-
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">5. Data-Driven Decision Making</h2>
-  <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">Use analytics to guide your business by:</p>
-  <ul class="list-disc pl-6 mb-8 space-y-2 text-gray-700 dark:text-gray-300">
-    <li>Tracking key performance metrics</li>
-    <li>Monitoring customer behavior patterns</li>
-    <li>Optimizing conversion rates continuously</li>
-    <li>Adjusting strategies based on data insights</li>
-  </ul>
-
-  <div class="mt-12 p-6 bg-purple-50 dark:bg-gray-800 rounded-lg border border-purple-100 dark:border-gray-700">
-    <p class="text-gray-700 dark:text-gray-300 italic">
-      Remember, success in ecommerce is a journey, not a destination. Keep learning, adapting, and improving your approach based on customer feedback and market trends.
-    </p>
-  </div>
-</div>
-    `,
-    coverImage: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80"
-  },
-  'leveraging-analytics-growth': {
-    title: "Leveraging Analytics for Growth: A Data-Driven Approach to eCommerce Success",
-    date: "2024-05-08",
-    author: "Data Analytics Team",
-    readingTime: "10 min read",
-    views: 856,
-    content: `
-<div class="blog-content">
-  <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100">Leveraging Analytics for Growth: A Data-Driven Approach to eCommerce Success</h1>
-
-  <p class="text-lg mb-8 text-gray-700 dark:text-gray-300 leading-relaxed">
-    In today's competitive eCommerce landscape, data analytics has become the cornerstone of sustainable growth. This comprehensive guide explores how businesses can harness the power of analytics to drive informed decisions and achieve remarkable results.
-  </p>
-
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">1. Understanding Key Performance Indicators (KPIs)</h2>
-  <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-    Successful eCommerce businesses track and analyze specific metrics that directly impact their bottom line. Here are the essential KPIs to monitor:
-  </p>
-  <div class="bg-accent/20 p-6 rounded-lg mb-8">
-    <img 
-      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" 
-      alt="Analytics Dashboard showing KPIs"
-      class="w-full h-auto rounded-lg shadow-lg"
-    />
-    <p class="text-sm text-muted-foreground mt-2">Key Performance Indicators in eCommerce</p>
-  </div>
-
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">2. Customer Journey Analytics</h2>
-  <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-    Understanding the customer journey is crucial for optimizing the shopping experience. Modern analytics tools allow us to:
-  </p>
-  <ul class="list-disc pl-6 mb-8 space-y-2 text-gray-700 dark:text-gray-300">
-    <li>Track user behavior across multiple touchpoints</li>
-    <li>Identify drop-off points in the conversion funnel</li>
-    <li>Analyze customer engagement patterns</li>
-    <li>Measure the effectiveness of marketing campaigns</li>
-  </ul>
-
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">3. Real-Time Analytics</h2>
-  <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-    Real-time analytics enables immediate response to changing market conditions and customer behavior. Here's a visualization of real-time customer behavior:
-  </p>
-  <div class="bg-accent/20 p-6 rounded-lg mb-8">
-    <img 
-      src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" 
-      alt="Real-time analytics dashboard"
-      class="w-full h-auto rounded-lg shadow-lg"
-    />
-    <p class="text-sm text-muted-foreground mt-2">Real-time Customer Behavior Analysis</p>
-  </div>
-
-  <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 mt-12">4. Data-Driven Decision Making Framework</h2>
-  <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-    Implement a structured approach to using analytics for decision making:
-  </p>
-  <ol class="list-decimal pl-6 mb-8 space-y-2 text-gray-700 dark:text-gray-300">
-    <li>Collect and validate data from multiple sources</li>
-    <li>Process and analyze data using appropriate tools</li>
-    <li>Generate actionable insights</li>
-    <li>Implement changes based on insights</li>
-    <li>Monitor results and iterate</li>
-  </ol>
-
-  <div class="mt-12 p-6 bg-purple-50 dark:bg-gray-800 rounded-lg border border-purple-100 dark:border-gray-700">
-    <p class="text-gray-700 dark:text-gray-300 italic">
-      "The key to successful analytics implementation lies not just in collecting data, but in deriving actionable insights that drive meaningful business outcomes."
-    </p>
-  </div>
-</div>
-    `,
-    coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80"
-  }
-};
+// Import the markdown file to get its frontmatter
+import postData from "@/blogs/key-elements-ecom-success.md";
 
 const BlogPost = () => {
   const { slug } = useParams();
-  const post = slug ? blogPosts[slug as keyof typeof blogPosts] : null;
+
+  // Use the frontmatter data from the markdown file
+  const post = {
+    title: postData.title,
+    date: postData.date,
+    author: postData.author,
+    readingTime: "8 min read",
+    views: 1205,
+    content: postData.content,
+    coverImage: postData.coverImage
+  };
 
   const handleShare = async () => {
     try {
@@ -276,4 +145,3 @@ const BlogPost = () => {
 };
 
 export default BlogPost;
-
