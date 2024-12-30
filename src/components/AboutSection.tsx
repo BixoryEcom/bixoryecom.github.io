@@ -1,4 +1,4 @@
-import { Building, Globe, ShoppingBag } from "lucide-react";
+import { Globe, ShoppingBag, Building } from "lucide-react";
 
 const AboutSection = () => {
   return (
@@ -9,9 +9,9 @@ const AboutSection = () => {
             Who We Are
           </h2>
           <p className="text-lg text-muted-foreground">
-            At Bixory, we're more than just an eCommerce company. We're your partners in digital success,
-            combining expertise in development, strategy, and innovation to help brands thrive in the
-            digital marketplace.
+            At Bixory, we're pioneering the future of eCommerce through AI-driven innovation. 
+            We combine advanced artificial intelligence with deep industry expertise to help brands 
+            thrive in the evolving digital marketplace.
           </p>
         </div>
 
@@ -20,17 +20,17 @@ const AboutSection = () => {
             {
               icon: <Globe className="h-8 w-8" />,
               title: "Global Reach",
-              description: "Connect with customers worldwide through optimized eCommerce solutions"
+              description: "Connect with customers worldwide through AI-optimized eCommerce solutions"
             },
             {
               icon: <ShoppingBag className="h-8 w-8" />,
               title: "Expert Solutions",
-              description: "Tailored eCommerce strategies backed by years of industry experience"
+              description: "AI-driven eCommerce strategies backed by human expertise"
             },
             {
               icon: <Building className="h-8 w-8" />,
               title: "Growth Platform",
-              description: "Scale your business with our comprehensive suite of tools and services"
+              description: "Scale your business with our AI-enhanced suite of tools and services"
             }
           ].map((item, index) => (
             <div

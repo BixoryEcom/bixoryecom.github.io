@@ -50,10 +50,20 @@ const HeroSection = () => {
         </div>
       ))}
 
-      {/* Floating Shapes */}
+      {/* Neural Network Pattern Overlay */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-float-delayed" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-float">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-indigo-500/20 mix-blend-overlay" />
+        </div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-float-delayed">
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 mix-blend-overlay" />
+        </div>
+        {/* Neural Network Lines */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-purple-200 to-transparent left-1/4 transform -skew-x-12" />
+          <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-indigo-200 to-transparent left-2/4 transform skew-x-12" />
+          <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-purple-200 to-transparent left-3/4 transform -skew-x-12" />
+        </div>
       </div>
 
       {/* Content */}
@@ -62,7 +72,7 @@ const HeroSection = () => {
           Your Partner in eCommerce Excellence
         </h1>
         <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-fade-in-delayed">
-          Discover curated eCommerce brands powered by innovation and expertise
+          Discover AI-powered eCommerce brands driving the future of digital retail
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-delayed">
           <Button
