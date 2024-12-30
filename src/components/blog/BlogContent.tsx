@@ -25,7 +25,14 @@ export const BlogContent = ({ content }: BlogContentProps) => {
     
     return contentParts.map((part, index) => {
       if (index % 2 === 0) {
-        return <div key={index} dangerouslySetInnerHTML={{ __html: part }} />;
+        // Convert markdown to HTML and wrap it with blog-content class
+        return (
+          <div 
+            key={index} 
+            className="blog-content"
+            dangerouslySetInnerHTML={{ __html: part }} 
+          />
+        );
       } else {
         switch (part) {
           case 'kpi-chart':
@@ -40,7 +47,7 @@ export const BlogContent = ({ content }: BlogContentProps) => {
   };
 
   return (
-    <div className="prose prose-lg dark:prose-invert max-w-none">
+    <div className="prose prose-lg dark:prose-invert max-w-none blog-content">
       {renderContent()}
     </div>
   );
