@@ -1,5 +1,12 @@
 import { KPIChart } from './charts/KPIChart';
 import { RealtimeChart } from './charts/RealtimeChart';
+import MarkdownIt from 'markdown-it';
+
+const md = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: true
+});
 
 interface BlogContentProps {
   content: string;
@@ -7,8 +14,11 @@ interface BlogContentProps {
 
 export const BlogContent = ({ content }: BlogContentProps) => {
   const processContent = (content: string) => {
-    // Replace chart placeholders with actual chart components
-    return content
+    // First convert markdown to HTML
+    const htmlContent = md.render(content);
+    
+    // Then replace chart placeholders
+    return htmlContent
       .replace(
         '<iframe style="background: #FFFFFF;" width="100%" height="300" src="https://charts-demos.vercel.app/analytics-kpi-chart" frameBorder="0"></iframe>',
         '<div id="kpi-chart-placeholder"></div>'
@@ -25,7 +35,6 @@ export const BlogContent = ({ content }: BlogContentProps) => {
     
     return contentParts.map((part, index) => {
       if (index % 2 === 0) {
-        // Convert markdown to HTML and wrap it with blog-content class
         return (
           <div 
             key={index} 
