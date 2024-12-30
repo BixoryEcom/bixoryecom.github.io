@@ -46,43 +46,45 @@ const HeroSection = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${image})` }}
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-black/75" />
         </div>
       ))}
 
-      {/* Neural Network Pattern Overlay */}
+      {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Larger, more visible floating shapes */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-float">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/40 to-indigo-500/40 mix-blend-overlay" />
+        {/* Large purple floating circle */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-3xl animate-float">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/40 to-indigo-600/40 mix-blend-overlay" />
         </div>
-        <div className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] bg-indigo-500/30 rounded-full blur-3xl animate-float-delayed">
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/40 to-purple-500/40 mix-blend-overlay" />
+        
+        {/* Large blue floating circle */}
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-600/30 rounded-full blur-3xl animate-float-delayed">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/40 to-cyan-600/40 mix-blend-overlay" />
         </div>
-
-        {/* Additional floating element */}
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-blue-500/20 rounded-full blur-2xl animate-float">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 mix-blend-overlay" />
-        </div>
-
-        {/* Enhanced Neural Network Lines */}
-        <div className="absolute inset-0 opacity-50">
-          {/* Vertical lines */}
-          <div className="absolute w-[2px] h-full bg-gradient-to-b from-transparent via-purple-300 to-transparent left-1/4 transform -skew-x-12" />
-          <div className="absolute w-[2px] h-full bg-gradient-to-b from-transparent via-indigo-300 to-transparent left-2/4 transform skew-x-12" />
-          <div className="absolute w-[2px] h-full bg-gradient-to-b from-transparent via-blue-300 to-transparent left-3/4 transform -skew-x-12" />
-          
-          {/* Horizontal connecting lines */}
-          <div className="absolute h-[2px] w-full bg-gradient-to-r from-transparent via-purple-300 to-transparent top-1/4 transform -skew-y-12" />
-          <div className="absolute h-[2px] w-full bg-gradient-to-r from-transparent via-indigo-300 to-transparent top-2/4 transform skew-y-12" />
-          <div className="absolute h-[2px] w-full bg-gradient-to-r from-transparent via-blue-300 to-transparent top-3/4 transform -skew-y-12" />
+        
+        {/* Medium cyan floating circle */}
+        <div className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-cyan-500/30 rounded-full blur-3xl animate-float">
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/40 to-teal-500/40 mix-blend-overlay" />
         </div>
 
-        {/* Animated dots at intersections */}
+        {/* Neural Network Pattern */}
         <div className="absolute inset-0">
-          <div className="absolute left-1/4 top-1/4 w-3 h-3 bg-purple-400 rounded-full animate-pulse" />
-          <div className="absolute left-2/4 top-2/4 w-3 h-3 bg-indigo-400 rounded-full animate-pulse" />
-          <div className="absolute left-3/4 top-3/4 w-3 h-3 bg-blue-400 rounded-full animate-pulse" />
+          {/* Vertical lines */}
+          <div className="absolute w-[3px] h-full bg-gradient-to-b from-transparent via-purple-400/50 to-transparent left-1/4 transform -skew-x-12" />
+          <div className="absolute w-[3px] h-full bg-gradient-to-b from-transparent via-blue-400/50 to-transparent left-2/4 transform skew-x-12" />
+          <div className="absolute w-[3px] h-full bg-gradient-to-b from-transparent via-cyan-400/50 to-transparent left-3/4 transform -skew-x-12" />
+          
+          {/* Horizontal lines */}
+          <div className="absolute h-[3px] w-full bg-gradient-to-r from-transparent via-purple-400/50 to-transparent top-1/4 transform -skew-y-12" />
+          <div className="absolute h-[3px] w-full bg-gradient-to-r from-transparent via-blue-400/50 to-transparent top-2/4 transform skew-y-12" />
+          <div className="absolute h-[3px] w-full bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent top-3/4 transform -skew-y-12" />
+        </div>
+
+        {/* Intersection Points */}
+        <div className="absolute inset-0">
+          <div className="absolute left-1/4 top-1/4 w-4 h-4 bg-purple-400 rounded-full animate-pulse" />
+          <div className="absolute left-2/4 top-2/4 w-4 h-4 bg-blue-400 rounded-full animate-pulse" />
+          <div className="absolute left-3/4 top-3/4 w-4 h-4 bg-cyan-400 rounded-full animate-pulse" />
         </div>
       </div>
 
