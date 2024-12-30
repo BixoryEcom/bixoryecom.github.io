@@ -114,6 +114,10 @@
     animation: fadeIn 1s ease-out 0.5s forwards;
     opacity: 0;
   }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
 }
 
 @keyframes float {
@@ -139,16 +143,11 @@
   }
 }
 
-/* Add pulse animation since Tailwind's animate-pulse might not be working as expected */
 @keyframes pulse {
   0%, 100% {
-    opacity: 1;
-  }
-  50% {
     opacity: 0.5;
   }
-}
-
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  50% {
+    opacity: 1;
+  }
 }

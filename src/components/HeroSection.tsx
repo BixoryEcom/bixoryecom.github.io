@@ -82,9 +82,9 @@ const HeroSection = () => {
 
         {/* Intersection Points */}
         <div className="absolute inset-0">
-          <div className="absolute left-1/4 top-1/4 w-3 h-3 bg-purple-400/50 rounded-full animate-pulse" />
-          <div className="absolute left-2/4 top-2/4 w-3 h-3 bg-blue-400/50 rounded-full animate-pulse" />
-          <div className="absolute left-3/4 top-3/4 w-3 h-3 bg-cyan-400/50 rounded-full animate-pulse" />
+          <div className="absolute left-1/4 top-1/4 w-4 h-4 bg-purple-400/50 rounded-full animate-pulse" />
+          <div className="absolute left-2/4 top-2/4 w-4 h-4 bg-blue-400/50 rounded-full animate-pulse" />
+          <div className="absolute left-3/4 top-3/4 w-4 h-4 bg-cyan-400/50 rounded-full animate-pulse" />
         </div>
       </div>
 
