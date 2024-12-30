@@ -3,23 +3,23 @@ import { ArrowRight, Brain, Rocket, Settings, BarChart3 } from "lucide-react";
 
 const services = [
   {
-    title: "Strategy Consulting",
-    description: "Expert guidance to optimize your eCommerce operations",
+    title: "AI-Powered Strategy",
+    description: "Predictive analytics and AI-driven market insights for strategic decision-making",
     icon: <Brain className="h-6 w-6" />
   },
   {
-    title: "Growth Marketing",
-    description: "Data-driven strategies to expand your market reach",
+    title: "Intelligent Marketing",
+    description: "AI-optimized campaigns and personalized customer experiences",
     icon: <Rocket className="h-6 w-6" />
   },
   {
-    title: "Technology Solutions",
-    description: "Cutting-edge tools for seamless online retail",
+    title: "Smart Technology",
+    description: "Next-gen eCommerce platforms with built-in AI capabilities",
     icon: <Settings className="h-6 w-6" />
   },
   {
-    title: "Analytics & Insights",
-    description: "Deep understanding of your business performance",
+    title: "Advanced Analytics",
+    description: "Real-time AI analytics for deeper business intelligence",
     icon: <BarChart3 className="h-6 w-6" />
   }
 ];
