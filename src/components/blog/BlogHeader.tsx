@@ -12,13 +12,13 @@ interface BlogHeaderProps {
 
 export const BlogHeader = ({ title, date, readingTime, views, coverImage }: BlogHeaderProps) => {
   return (
-    <div className="relative h-[60vh] min-h-[400px] w-full">
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${coverImage})` }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+    <div className="relative h-[60vh] min-h-[400px] w-full overflow-hidden">
+      <img 
+        src={coverImage}
+        alt={title}
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
       <div className="absolute inset-0 flex flex-col justify-center items-center text-white container mx-auto px-4">
         <h1 className="text-4xl md:text-5xl font-bold text-center max-w-4xl mb-6">
           {title}
