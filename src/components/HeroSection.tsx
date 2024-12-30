@@ -60,7 +60,7 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/40 to-purple-500/40 mix-blend-overlay" />
         </div>
 
-        {/* Additional floating elements */}
+        {/* Additional floating element */}
         <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-blue-500/20 rounded-full blur-2xl animate-float">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 mix-blend-overlay" />
         </div>
