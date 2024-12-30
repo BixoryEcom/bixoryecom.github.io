@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   base: "./",
   server: {
-    host: "0.0.0.0",
+    host: "::",
     port: 8080,
   },
   plugins: [
@@ -19,5 +19,4 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  assetsInclude: ["**/*.md"],
 }));
