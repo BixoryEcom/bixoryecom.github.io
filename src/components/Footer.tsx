@@ -116,7 +116,7 @@ const Footer = () => {
             <p className="text-sm text-gray-400 mb-4">
               Get the latest updates on our eCommerce ventures and expert insights.
             </p>
-            <div className="space-y-2">
+            <div className="flex gap-2">
               <Input
                 type="email"
                 placeholder="Enter your email"
@@ -124,7 +124,7 @@ const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <Button className="w-full" onClick={handleSubscribe}>Sign Up Now</Button>
+              <Button onClick={handleSubscribe}>Sign Up Now</Button>
             </div>
           </div>
         </div>
