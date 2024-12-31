@@ -26,8 +26,13 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services-section" className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-100/30 via-white/80 to-purple-50/50"></div>
+    <section id="services-section" className="py-24 relative bg-gradient-to-b from-white via-purple-50/80 to-purple-100/50">
+      {/* Dark purple geometric shapes for visual interest */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-32 -right-32 w-64 h-64 bg-purple-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 -left-32 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl"></div>
+      </div>
+      
       <div className="container mx-auto px-4 relative">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
           How We Help Your Business Thrive
@@ -37,7 +42,7 @@ const ServicesSection = () => {
             <Card
               key={index}
               className="group hover:shadow-xl transition-all duration-500 border-purple-100 hover:border-purple-200 
-                bg-white/50 backdrop-blur-sm overflow-hidden transform hover:-translate-y-1"
+                bg-white/80 backdrop-blur-sm overflow-hidden transform hover:-translate-y-1"
             >
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4">
