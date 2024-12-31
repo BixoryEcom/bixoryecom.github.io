@@ -57,7 +57,7 @@ const Footer = () => {
               />
               <h3 className="text-2xl font-bold">BIXORY eCOM</h3>
             </Link>
-            <p className="text-sm text-gray-400">Build Next-gen eCommerce</p>
+            <p className="text-sm font-['Playfair_Display'] text-[#FFD700] italic">Build Next-gen eCommerce with AI</p>
             <div className="flex space-x-4 justify-center md:justify-start">
               <a href="#" className="hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
