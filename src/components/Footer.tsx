@@ -48,8 +48,8 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Branding Column */}
-          <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <div className="space-y-4 text-center md:text-left">
+            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity justify-center md:justify-start">
               <img 
                 src="/lovable-uploads/73845396-eac7-477c-a78d-466f850a111d.png" 
                 alt="Bixory Logo" 
@@ -58,7 +58,7 @@ const Footer = () => {
               <h3 className="text-2xl font-bold">BIXORY eCOM</h3>
             </Link>
             <p className="text-sm text-gray-400">Build Next-gen eCommerce</p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center md:justify-start">
               <a href="#" className="hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
@@ -72,7 +72,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links Column */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
@@ -94,7 +94,7 @@ const Footer = () => {
           </div>
 
           {/* Policies Column */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="font-semibold mb-4">Policies</h4>
             <ul className="space-y-2">
               <li>
@@ -111,7 +111,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter Column */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="font-semibold mb-4">Newsletter</h4>
             <p className="text-sm text-gray-400 mb-4">
               Get the latest updates on our eCommerce ventures and expert insights.
