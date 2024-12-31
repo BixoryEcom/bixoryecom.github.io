@@ -27,7 +27,7 @@ const PortfolioSection = () => {
   };
 
   return (
-    <section id="portfolio-section" className="py-24 relative">
+    <section id="portfolio-section" className="py-16 md:py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-purple-50/80 via-white to-purple-100/30"></div>
       <div className="container mx-auto px-4 relative">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
