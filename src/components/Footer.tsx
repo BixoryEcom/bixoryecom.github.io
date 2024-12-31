@@ -124,7 +124,12 @@ const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <Button onClick={handleSubscribe}>Sign Up Now</Button>
+              <Button 
+                onClick={handleSubscribe}
+                className="bg-[#8B5CF6] hover:bg-[#7C3AED] text-white"
+              >
+                Sign Up Now
+              </Button>
             </div>
           </div>
         </div>
